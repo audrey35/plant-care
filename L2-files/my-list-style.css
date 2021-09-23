@@ -1,0 +1,19 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #668738;
+  margin: 5%;
+}
+
+div {
+  display: flex;
+}
+
+h3 {
+  margin-right: auto;
+}
+
+p {
+  color: black;
+  max-width: 60vw;
+  padding: 1vw;
+}
