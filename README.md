@@ -298,6 +298,6 @@ Follow the instructions (here)[https://devcenter.heroku.com/articles/getting-sta
    Use `-i` flag when logging into Heroku from the command line.  
    `heroku login -i`
 2. Open http://localhost:5000 from browser on my Mac
-   Run `ifconfig -a`  
+   Run `ifconfig -a` on Ubuntu Server on VirtualBox.
    Find the inet for enps03
    The address should be http://enps03_inet:5000
