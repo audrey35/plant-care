@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap 5 CDN -->
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+        crossorigin="anonymous"
+    />
+
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+    <title>Edit Website</title>
+  </head>
+  <body>
+    <main class="container w-95">
+      <h1>Edit Website <i class="bi bi-check"></i></h1>
+      <form> <!-- source: https://getbootstrap.com/docs/5.1/forms/overview/ -->
+        <div class="mb-3">
+            <label for="editWebsiteName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="editWebsiteName">
+          </div>
+        <div class="mb-3">
+            <label for="editWebsiteDescription">Description</label>
+          <textarea id="editWebsiteDescription" name="editWebsiteDescription" class="w-100"></textarea>
+        </div>
+        <button type="submit" class="btn btn-danger w-100">Delete</button>
+      </form>
+    </div>
+    </main>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
