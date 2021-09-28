@@ -2,12 +2,6 @@ label {
   font-weight: bold;
 }
 
-.my-primary {
-  background-color: #438bc8;
-  color: white;
-}
-
-.my-danger {
-  background-color: #d8564e;
-  color: white;
+nav div {
+  font-weight: bold;
 }
