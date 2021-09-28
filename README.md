@@ -274,18 +274,15 @@ Follow the instructions (here)[https://devcenter.heroku.com/articles/getting-sta
 
 ## Assignment 3
 
-**Bootstrap**
+**Bootstrap Grid Layout**
 
 - Source: LinkedIn Learning Create a Quick, Clean, and Cheap Website with Bootstrap Templates
 - Free Bootstrap templates: https://startbootstrap.com/?showPro=false
-
-Bootstrap Grid Layout
-
 - Bootstrap layout: 12 column grid system
 - Can have infinite number of rows
 - Each element in the same row can occupy different number of columns but they must sum up to 12
 
-Responsive breakpoints
+_Responsive breakpoints_
 
 - https://getbootstrap.com/docs/5.0/layout/breakpoints/
 - Bootstrap already has device-specific breaking points, or lengths chosen based on pixel width of screen sizes, for how we can redistribute our website’s layout
@@ -296,7 +293,7 @@ Responsive breakpoints
   - lg: 992px-1199px, laptops and computers
   - xl: 1199px <, extra wide monitors, larger computer screens
 
-Main bootstrap class syntax
+_Main bootstrap class syntax_
 
 - `col-[size]-[#columns]`
 - `<div class=“col-lg-2 col-md-3 col-sm-6”>`
@@ -312,7 +309,7 @@ Main bootstrap class syntax
 - If Bootstrap layouts are not displaying as you expect, try wrapping them in a div with class container tag. If that doesn’t do the trick, then add a second internal div, wrapping them with class row.
   - Ex. `<div class=“container”><div class=“row”><div class=“col-md-4…”>`
 
-Requirements
+_Requirements_
 
 - Portrait-view mobile devices (col-xs)
   - Each element takes up the entire screen width
@@ -325,7 +322,7 @@ Requirements
 - Larger monitors (col-xl)
   - All four elements fit evenly on the same row
 
-Code adhering to the requirements
+_Code adhering to the requirements_
 
 ```
 <div class=“container”>
@@ -337,3 +334,65 @@ Code adhering to the requirements
   </div>
 </div>
 ```
+
+**Bootstrap Navigation**
+
+- Source: LinkedIn Learning Bootstrap 5 Essential Training
+  - [Interactive slides for the course](https://raybo.org/slides_bootstrap5) (contains live code examples)
+
+_Navigation_  
+[source slides](https://go.raybo.org/4AJD)
+
+- The set of nav classes are meant for simpler navigations
+- navbar classes are more complex in comparison
+- can be used with:
+
+  - ordered list
+  - unordered list
+  - divs
+  - nav tag (with nav class is the recommended usage)
+
+- nav classes are aligned with flex box classes
+
+- types of nav
+  - nav (contains nav-item)
+  - nav-item (contains nav-link)
+  - nav-link
+
+[CodePen](https://codepen.io/planetoftheweb/pen/jOypKXZ?editors=1000): examples of using Navs with unordered lists, divs, nav tags
+
+_Navigation Bar_  
+[source slides](https://go.raybo.org/4AJG)
+
+- for building main navigation items
+- <nav class="navbar"></nav>
+- has classes:
+  - bg-{COL}: background color
+    - COL: primary, secondary, success, danger, warning, info, light, dark, white
+    - when using bg, you must specify navbar-light/dark
+  - navbar-{COL}: background
+    - COL: light, dark
+  - navbar-expand-{BR}: expand the links to a horizontal section at specified breakpoints
+  - container{-BR}: navbar usually has a container for aligning the text inside the navbar to the Bootstrap grid
+    - BR: sm, md, lg, xl, xxl, fluid (breakpoints)
+  - navbar-nav: this section is where all the links belong
+    - series of list items with anchor tags
+    - just anchor tags
+    - nav-item: class for list items
+    - nav-links: class for the anchor tags
+    - if only using anchor tags, then both classes would be used for the anchor tags
+
+[CodePen](https://codepen.io/planetoftheweb/pen/PoWBBye?editors=1000): examples of using Navbar
+
+**Statically Positioning the Header and Footer**
+
+- headers and footers should be statically positioned at the top and bottom respectively
+- they should not scroll with the rest of the content
+- [Bootstrap Placement](https://getbootstrap.com/docs/5.1/components/navbar/#placement)
+- use `fixed-top` and `fixed-bottom` classes
+
+**Adding space between Header/Footer and Body**
+
+- [Bootstrap Spacing](https://getbootstrap.com/docs/5.1/utilities/spacing/)
+- use class `mb-5` or `mt-5`: set margin top/bottom spacer \* 3
+- consistent spacing between header/footer and body regardless of screen size, unlike setting margins in plain css
