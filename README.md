@@ -271,3 +271,69 @@ Follow the instructions (here)[https://devcenter.heroku.com/articles/getting-sta
    Run `ifconfig -a` on Ubuntu Server on VirtualBox.
    Find the inet for enp0s3
    The address should be http://enp0s3_inet:5000
+
+## Assignment 3
+
+**Bootstrap**
+
+- Source: LinkedIn Learning Create a Quick, Clean, and Cheap Website with Bootstrap Templates
+- Free Bootstrap templates: https://startbootstrap.com/?showPro=false
+
+Bootstrap Grid Layout
+
+- Bootstrap layout: 12 column grid system
+- Can have infinite number of rows
+- Each element in the same row can occupy different number of columns but they must sum up to 12
+
+Responsive breakpoints
+
+- https://getbootstrap.com/docs/5.0/layout/breakpoints/
+- Bootstrap already has device-specific breaking points, or lengths chosen based on pixel width of screen sizes, for how we can redistribute our website’s layout
+- Breaking points are distributed in 5 categories:
+  - xs: less than 576px, vertically held mobile phone
+  - sm: 576px - 767px, horizontally held mobile phone
+  - md: 768px-991px, tablet
+  - lg: 992px-1199px, laptops and computers
+  - xl: 1199px <, extra wide monitors, larger computer screens
+
+Main bootstrap class syntax
+
+- `col-[size]-[#columns]`
+- `<div class=“col-lg-2 col-md-3 col-sm-6”>`
+- size: one of 5 screen size designations
+- #columns: number of columns the element should span at that screen size designation range
+- May want to define one for each breaking point for a single element
+- xl layout by default, inherits the same column span defined for lg
+- When you specify a breaking point’s column span, by default, the layout is applied to all the screen sizes above or larger than the specified screen size
+- xs: by default, takes up the full 12-column row or split the screen with any other element that also has an undefined xs size, if they are wrapped in an element with a row class
+- No need to define xs when specifying the column span.
+  - Use col rather than col-xs
+  - col-12 is the default and doesn’t need to be specified
+- If Bootstrap layouts are not displaying as you expect, try wrapping them in a div with class container tag. If that doesn’t do the trick, then add a second internal div, wrapping them with class row.
+  - Ex. `<div class=“container”><div class=“row”><div class=“col-md-4…”>`
+
+Requirements
+
+- Portrait-view mobile devices (col-xs)
+  - Each element takes up the entire screen width
+- Landscape-view mobile devices (col-sm) and tablets (col-md)
+  - Each element takes up half the screen width
+- Laptop screens (col-lg)
+  - Elements 1 and 4 each take up 1/4 of the screen width
+  - Elements 2 and 3 each take up 3/4 of the screen width
+  - Meaning 1 & 2 should be on the same row and 3 & 4 should be on the next row
+- Larger monitors (col-xl)
+  - All four elements fit evenly on the same row
+
+Code adhering to the requirements
+
+```
+<div class=“container”>
+  <div class=“row”>
+    <div class=“col-sm-6 col-lg-3”></div>
+    <div class=“col-sm-6 col-lg-9 col-xl-3”></div>
+    <div class=“col-sm-6 col-lg-9 col-xl-3”></div>
+    <div class=“col-sm-6 col-lg-3”></div>
+  </div>
+</div>
+```
