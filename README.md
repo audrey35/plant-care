@@ -25,10 +25,17 @@
      `git commit -m "Initial commit"`
    - with a long message  
      `git commit`
-4. View all commit messages  
+4. Create a tag
+   - tag an old commit
+     `git tag -a "assignment1" -m "Assignment 1" [commit_sha]`
+   - tag the last commit
+     `git tag -a "assignment1" -m "Assignment 1"
+5. View all commit messages  
    `git log`
-5. Push changes to remote repository  
-   `git push`
+6. View all tags
+   `git tag`
+7. Push changes to remote repository (push tags as well)
+   `git push --tags`
 
 # One Time Setup
 
@@ -183,7 +190,7 @@ Set editor: `git config --global core.editor vim`
 2. generate a new SSH key using your Khoury GitHub email  
    `ssh-keygen -t ed25519 -C "audreyjo@login-students.ccs.neu.edu"`
 3. prompts for "Enter file in which to save the key"  
-   `.ssh/neu_ed25519`
+   `.ssh/id_ed25519`
 4. <kbd>return</kbd> to skip providing a passphrase
 5. open config file for editing  
    `vi ~/.ssh/config`
@@ -194,14 +201,14 @@ Set editor: `git config --global core.editor vim`
    Host neu
    HostName github.ccs.neu.edu
    User git
-   IdentityFile ~/.ssh/neu_ed25519
+   IdentityFile ~/.ssh/id_ed25519
    ```
 
 **Add a new SSH key to Khoury GitHub**
 
 1. open Terminal on Mac and log into Ubuntu Server on VirtualBox
 2. copy the SSH public key to your clipboard by running the command below, then cmd + C to copy  
-   `vi ~/.ssh/neu_ed25519.pub`
+   `vi ~/.ssh/id_ed25519.pub`
 3. browser: log into Khoury GitHub
 4. click the profile photo
 5. click Settings
@@ -246,14 +253,10 @@ Set editor: `git config --global core.editor vim`
 - Click SSH and copy the link
 
 2. On Terminal, ssh into Ubuntu Server on VirtualBox
-3. Navigate to the folder to save the cloned repo  
-   `cd ~/public/assignments`
-4. Set up git to pull from my repo
-   ```
-   git init
-   git remote add origin neu:audreyjo/cs5610_audreyjo.git
-   git pull
-   ```
+3. Navigate to the folder to save the cloned repo
+   `cd ~`
+4. Replace git@github.ccs.neu.edu: with git clone neu:  
+   `git clone neu:audreyjo/cs5610_audreyjo.git`
 
 ## Getting Started on Heroku with Node.js on Ubuntu (VirtualBox)
 
