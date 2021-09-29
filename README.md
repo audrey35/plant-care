@@ -396,3 +396,7 @@ _Navigation Bar_
 - [Bootstrap Spacing](https://getbootstrap.com/docs/5.1/utilities/spacing/)
 - use class `mb-5` or `mt-5`: set margin top/bottom spacer \* 3
 - consistent spacing between header/footer and body regardless of screen size, unlike setting margins in plain css
+
+**Make different content display/hide at various breakpoints**
+
+- [Display Content](https://getbootstrap.com/docs/4.0/utilities/display/)
