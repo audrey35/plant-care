@@ -29,7 +29,7 @@
    - tag an old commit
      `git tag -a "assignment1" -m "Assignment 1" [commit_sha]`
    - tag the last commit
-     `git tag -a "assignment1" -m "Assignment 1"
+     `git tag -a "assignment1" -m "Assignment 1"`
 5. View all commit messages  
    `git log`
 6. View all tags
@@ -400,3 +400,8 @@ _Navigation Bar_
 **Make different content display/hide at various breakpoints**
 
 - [Display Content](https://getbootstrap.com/docs/4.0/utilities/display/)
+
+**Deploy a NodeJS app on Heroku**
+
+- [Node JS app on Heroku](https://stackabuse.com/deploying-a-node-js-app-to-heroku/)
+- package.json must be at the root folder of the git repository
