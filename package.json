@@ -1,0 +1,19 @@
+{
+  "name": "assignment",
+  "version": "1.0.0",
+  "description": "Assignment for CS 5610",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Audrey Jo",
+  "license": "ISC",
+  "engines": {
+	  "node": "16.9.1",
+	  "npm": "7.23.0"
+  },
+  "dependencies": {
+	  "express": "^4.17.1"
+  }
+}
