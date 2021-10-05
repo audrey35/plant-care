@@ -2,7 +2,9 @@
 <html>
 <head>
     <!-- CHANGES MADE
-    1. Random Brick Colors -->
+    1. Random Brick Colors 
+    2. Track Levels
+    -->
     <meta charset="utf-8" />
     <title>Breakout Game - Final Version from Class</title>
     <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
@@ -33,15 +35,20 @@
     var brickOffsetLeft = 30;
     var score = 0;
     var lives = 3;
+    var level = 1;
+    var old = 1;
 
     var bricks = [];
     var brickColors = [];
-    for(var c=0; c<brickColumnCount; c++) {
-        bricks[c] = [];
-        brickColors[c] = [];
-        for(var r=0; r<brickRowCount; r++) {
-            bricks[c][r] = { x: 0, y: 0, status: 1 };
-            brickColors[c][r] = randomColor();
+    setBricks();
+    function setBricks() {
+        for(var c=0; c<brickColumnCount; c++) {
+            bricks[c] = [];
+            brickColors[c] = [];
+            for(var r=0; r<brickRowCount; r++) {
+                bricks[c][r] = { x: 0, y: 0, status: 1 };
+                brickColors[c][r] = randomColor();
+            }
         }
     }
 
@@ -81,8 +88,17 @@
                         b.status = 0;
                         score++;
                         if(score == brickRowCount*brickColumnCount) {
-                            alert("YOU WIN, CONGRATS!");
-                            document.location.reload();
+                            level++;
+                            lives = 3;
+                            score = 0;
+                            setBricks();
+                            x = canvas.width/2;
+                            y = canvas.height-30;
+                            dx = 2;
+                            dy = -2;
+                            paddleX = (canvas.width-paddleWidth)/2;
+                            alert("YOU LEVELED UP! LEVEL " + level);
+                            //document.location.reload();
                         }
                     }
                 }
@@ -132,6 +148,13 @@
             }
         }
     }
+
+    function drawLevel() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Level: "+level, 100, 20);
+    }
+
     function drawScore() {
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
@@ -150,6 +173,7 @@
         drawPaddle();
         drawScore();
         drawLives();
+        drawLevel();
         collisionDetection();
 
         if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
