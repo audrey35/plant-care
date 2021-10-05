@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- CHANGES MADE
+    1. Random Brick Colors -->
     <meta charset="utf-8" />
     <title>Breakout Game - Final Version from Class</title>
     <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
@@ -33,10 +35,13 @@
     var lives = 3;
 
     var bricks = [];
+    var brickColors = [];
     for(var c=0; c<brickColumnCount; c++) {
         bricks[c] = [];
+        brickColors[c] = [];
         for(var r=0; r<brickRowCount; r++) {
             bricks[c][r] = { x: 0, y: 0, status: 1 };
+            brickColors[c][r] = randomColor();
         }
     }
 
@@ -120,7 +125,7 @@
                     bricks[c][r].y = brickY;
                     ctx.beginPath();
                     ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                    ctx.fillStyle = randomColor(); // previous "#0095DD"
+                    ctx.fillStyle = brickColors[c][r]; // previous "#0095DD"
                     ctx.fill();
                     ctx.closePath();
                 }
