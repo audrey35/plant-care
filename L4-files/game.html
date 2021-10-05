@@ -99,6 +99,17 @@
         ctx.fill();
         ctx.closePath();
     }
+
+    function randomColor() {
+        // color palette from https://coolors.co/cdb4db-ffc8dd-ffafcc-bde0fe-a2d2ff
+        var colors = [
+            "#CDB4DB", "#FFC8DD", "#FFAFCC", "#BDE0FE", "#A2D2FF", 
+            "#9C89B8", "#F0A6CA", "#EFC3E6", "#F0E6EF", "#B8BEDD"
+        ];
+        return colors[Math.floor(Math.random() * 10) - 1];
+
+    }
+
     function drawBricks() {
         for(var c=0; c<brickColumnCount; c++) {
             for(var r=0; r<brickRowCount; r++) {
@@ -109,7 +120,7 @@
                     bricks[c][r].y = brickY;
                     ctx.beginPath();
                     ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                    ctx.fillStyle = "#0095DD";
+                    ctx.fillStyle = randomColor(); // previous "#0095DD"
                     ctx.fill();
                     ctx.closePath();
                 }

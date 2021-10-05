@@ -401,7 +401,41 @@ _Navigation Bar_
 
 - [Display Content](https://getbootstrap.com/docs/4.0/utilities/display/)
 
+**Run Node JS app**
+
+- start Ubuntu Server on VirtualBox
+- ssh into Ubuntu Server
+- create package.json and edit server.js according to [Node JS app on Heroku](https://stackabuse.com/deploying-a-node-js-app-to-heroku/)
+- place package.json and server.js at the root folder
+- run `npm start`
+- use a browser to navigate to http://enp0s3_inet_ubuntu_server:3000
+
 **Deploy a NodeJS app on Heroku**
 
 - [Node JS app on Heroku](https://stackabuse.com/deploying-a-node-js-app-to-heroku/)
-- package.json must be at the root folder of the git repository
+- package.json must be at the root folder of the git repository in order for heroku to recognize what buildpack to run (Node JS)
+
+```
+heroku login -i
+heroku create
+git remote -v
+git push heroku master:main
+git remote rename heroku a3
+```
+
+## Assignment 4
+
+**Deploy another NodeJS app on Heroku from same repo**
+
+- place server.js at the root folder of the git repository for easy access
+- update the folder used in server.js
+  - `app.use(express.static('L4-files'));`
+  - the folder should contain index.html
+- no need to modify server.js
+- create a new heroku app from the website
+- add the heroku app as a remote branch in git
+  ```
+  git remote add a4 https://git.heroku.com/breakout-game-5610.git
+  git remote -v
+  ```
+- deploy app on heroku `git push a4 master:main`
