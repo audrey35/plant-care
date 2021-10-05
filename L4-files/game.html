@@ -2,8 +2,9 @@
 <html>
 <head>
     <!-- CHANGES MADE
-    1. Random Brick Colors 
+    1. Random Brick Colors
     2. Track Levels
+    3. Increase ball speed by changing dx and dy by a factor (level/4) after leveling up
     -->
     <meta charset="utf-8" />
     <title>Breakout Game - Final Version from Class</title>
@@ -94,8 +95,8 @@
                             setBricks();
                             x = canvas.width/2;
                             y = canvas.height-30;
-                            dx = 2;
-                            dy = -2;
+                            dx = 2 + (level / 4);
+                            dy = -2 - (level / 4);
                             paddleX = (canvas.width-paddleWidth)/2;
                             alert("YOU LEVELED UP! LEVEL " + level);
                             //document.location.reload();
@@ -152,13 +153,13 @@
     function drawLevel() {
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
-        ctx.fillText("Level: "+level, 100, 20);
+        ctx.fillText("Level: "+level, 8, 20);
     }
 
     function drawScore() {
         ctx.font = "16px Arial";
         ctx.fillStyle = "#0095DD";
-        ctx.fillText("Score: "+score, 8, 20);
+        ctx.fillText("Score: "+score, 100, 20);
     }
     function drawLives() {
         ctx.font = "16px Arial";
@@ -195,8 +196,6 @@
                 else {
                     x = canvas.width/2;
                     y = canvas.height-30;
-                    dx = 2;
-                    dy = -2;
                     paddleX = (canvas.width-paddleWidth)/2;
                 }
             }
