@@ -439,3 +439,40 @@ git remote rename heroku a3
   git remote -v
   ```
 - deploy app on heroku `git push a4 master:main`
+
+**Run the server and other commands simultaneously**
+
+- stop the server `Ctrl + Z`
+- run the server in the background `bg`
+- this gives the prompt back to the user allowing user to run other commands and still have the server running
+- display processes running `ps -ef`
+- display process containing app.js `ps -ef | grep app.js`
+- kill app.js process (1623 was the PID for app.js in this example) `kill -9 1623`
+- if kill command returns an error: No such process
+  - exit ssh connection to Ubuntu Server on VirtualBox
+  - reconnect to Ubuntu Server
+  - find the PID again
+  - try to kill the process again
+
+**Create a Node Project**
+
+```
+mkdir blog
+cd blog
+npm init // initialize a new node package
+```
+
+- accept all defaults for npm init prompt
+- entry point: index.js
+- package.json file created
+
+**Install Express**
+
+- need to install express using npm
+- `npm install express --save`
+- saves express as a dependency on the app being built
+- upgrade npm if needed
+
+**Edit app.js file to take advantage of Express**
+
+- create new app.js inside blog directory for the blog service
