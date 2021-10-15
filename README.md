@@ -440,10 +440,17 @@ git remote rename heroku a3
 - no need to modify server.js
 - create a new heroku app from the website
 - add the heroku app as a remote branch in git
+- start needs to be edited from `node ./bin/www` to `node ./HW05/wordsearch/bin/www`
+
   ```
+  // add with repo name (a5 is branch name)
+  heroku git:remote -a word-search-games -r a5
+
+  // add with url
   git remote add a4 https://git.heroku.com/breakout-game-5610.git
   git remote -v
   ```
+  
 - deploy app on heroku `git push a4 master:main`
 
 **Run the server and other commands simultaneously**
