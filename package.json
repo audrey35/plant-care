@@ -1,19 +1,17 @@
 {
-  "name": "assignment",
-  "version": "1.0.0",
-  "description": "Assignment for CS 5610",
-  "main": "server.js",
+  "name": "wordsearch",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Audrey Jo",
-  "license": "ISC",
-  "engines": {
-	  "node": "16.9.1",
-	  "npm": "7.23.0"
+    "start": "node ./HW05/wordsearch/bin/www"
   },
   "dependencies": {
-	  "express": "^4.17.1"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "^0.29.0",
+    "morgan": "~1.9.1",
+    "hbs": "*"
   }
 }

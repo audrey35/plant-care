@@ -1,3 +1,9 @@
+# HW06
+- overview of what you did in this homework
+- screenshots of your web page
+- link to Heroku
+
+
 # Daily Tasks
 
 ## Update local copy of a repository online with the latest version
