@@ -11,7 +11,14 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+
+// for res.render to render .html rather than default .jade
+// handles Error: No default engine was specified and no extension was provided.
+// https://stackoverflow.com/a/23596000
+var hbs = require('hbs');
+app.set('view engine', 'html');
+app.engine('html', hbs.__express);
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -21,6 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.get('/', (req, res) => {
+  res.render('index')
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
