@@ -15,33 +15,22 @@
 
 ## Copy each Assignment from local copy of professor's repo to the local copy of my repo
 
-1. Terminal: navigate to ~/Northeastern/github/cs5610  
-   `cd ~/Northeastern/github/cs5610`
-2. copy first assignment from professor's repo to mine (local repos)  
-   `cp -r CS5610_ClassRepo/L1-files cs5610_audreyjo`
+1. Terminal: navigate to ~/Northeastern/github/cs5610 `cd ~/Northeastern/github/cs5610`
+2. copy first assignment from professor's repo to mine (local repos) `cp -r CS5610_ClassRepo/L1-files cs5610_audreyjo`
 
 ## Commit and push changes to my repo
 
-1. Check if any changes have been made since last commit  
-   `git status`
-2. Add all changes to git staging directory  
-   `git add .`
+1. Check if any changes have been made since last commit `git status`
+2. Add all changes to git staging directory `git add .`
 3. Make a commit
-   - with a short message  
-     `git commit -m "Initial commit"`
-   - with a long message  
-     `git commit`
+   - with a short message `git commit -m "Initial commit"`
+   - with a long message `git commit`
 4. Create a tag
-   - tag an old commit
-     `git tag -a "assignment1" -m "Assignment 1" [commit_sha]`
-   - tag the last commit
-     `git tag -a "assignment1" -m "Assignment 1"`
-5. View all commit messages  
-   `git log`
-6. View all tags
-   `git tag`
-7. Push changes to remote repository (push tags as well)
-   `git push --tags`
+   - tag an old commit `git tag -a "assignment1" -m "Assignment 1" [commit_sha]`
+   - tag the last commit `git tag -a "assignment1" -m "Assignment 1"`
+5. View all commit messages `git log`
+6. View all tags `git tag`
+7. Push changes to remote repository (push tags as well) `git push --tags`
 
 # One Time Setup
 
@@ -69,42 +58,87 @@
    Version _Ubuntu (64-bit)_
 3. Accept all defaults for the rest to create the VM
 4. Click Settings for the Ubuntu Server
-5. Set Storage
+5. Display _200%_
+6. Set Storage
 
 - Click _Empty_ under _Controller: IDE_
 - Click Choose a Disk File
 - Click the downloaded ubuntu server .iso file
 
-9. Disable Audio
-10. Enable Network
+7. Disable Audio
+8. Enable Network
 
 - Attached to: Bridged Adapter
 - Promiscuous Mode: Allow all
 
-11. Display
-
-- 200%
-
-12. Close Settings
-13. Start Ubuntu Server
-14. Accept all defaults for set up
-15. Restart Ubuntu Server when prompted
-16. After reboot, do a Headless Start
-17. Click Show, then run  
-    `ifconfig -a`
-18. If it failed, then run
+9. Close Settings
+10. Start Ubuntu Server
+11. Accept all defaults for set up
+   - if you get FAILED Cannot unmount CD rom, simply press Enter to continue
+13. Restart Ubuntu Server when prompted
+14. After reboot, do a Headless Start
+15. Click Show, then run 
+```
+sudo apt update
+ifconfig -a
+```
+16. If it failed, then run
 
 ```
-sudo apt instal net-tools
+sudo apt install net-tools
 if config -a
 ```
 
-19. Copy the inet for enp0s3
-20. Close the Terminal for Ubuntu Server (continue running in background)
-21. Open the Terminal on Mac
-22. SSH into Ubuntu Server on VirtualBox  
+17. Copy the inet for enp0s3
+18. Open the Terminal on Mac
+19. SSH into Ubuntu Server on VirtualBox  
     `ssh username_ubuntu_server@enp0s3_inet_ubuntu_server`
-23. Open up specific ports on the Ubuntu Server and lock the rest of the ports by using ufw (ubuntu firewall), which can only be run by super user.
+20. If it failed, then open Ubuntu Server screen (Click Show), then run `sudo apt install openssh-server`
+21. Switch to Terminal on Mac, then ssh into Ubuntu Server on VirtualBox again
+
+## How to connect to Ubuntu Server on VirtualBox from Mac?
+
+**Generate a new SSH key**
+
+1. open Terminal on Mac
+2. generate a new SSH key using your email  
+   `ssh-keygen -t ed25519 -C "audreyjo35@gmail.com"`
+3. prompts for "Enter file in which to save the key"  
+   `.ssh/id_ed25519`
+4. <kbd>return</kbd> to skip providing a passphrase
+5. open config file for editing  
+   `open ~/.ssh/config`
+6. if the command fails, then try  
+   `touch ~/.ssh/config`
+7. edit the file as shown below, then save and close the file
+   ```
+   Host ubuntu
+   HostName enp0s3_inet
+   User ubuntu
+   IdentityFile ~/.ssh/id_ed25519
+   ```
+
+**Add a new SSH key to Ubuntu Server on VirtualBox**
+
+1. Copy the public keyfile to the home folder on the Ubuntu Server on VirtualBox
+   `scp .ssh/id_rsa.pub username_for_ubuntu_server@enp0s3_inet_for_ubuntu_server:`
+2. Log into Ubuntu Server
+   `ssh username_for_ubuntu_server@enp0s3_inet_for_ubuntu_server`
+3. Add the contents of the copied public key to the authorized keys file on the Khoury server
+   `cat id_rsa.pub > .ssh/authorized_keys`
+4. Exit the Ubuntu Server
+   `exit`
+
+**Test your SSH connection**
+
+1. open Terminal on Mac
+2. connect to Ubuntu Server on VirtualBox using SSH  
+   `ssh ubuntu`
+3. you may see a warning "Are you sure you want to continue connecting?"  
+   `yes` + <kbd>return</kbd>
+
+## How to open up specific ports on Ubuntu Server (VirtualBox)
+Open up specific ports on the Ubuntu Server and lock the rest of the ports by using ufw (ubuntu firewall), which can only be run by super user.
 
 ```
 sudo bash # start super user shell
@@ -135,47 +169,6 @@ exit # exit super user shell
    `npm uninstall express`
 7. Reinstall express version 4 to match the textbook
    `npm install express@4`
-
-## How to connect to Ubuntu Server on VirtualBox from Mac?
-
-**Generate a new SSH key**
-
-1. open Terminal on Mac
-2. generate a new SSH key using your email  
-   `ssh-keygen -t ed25519 -C "audreyjo35@gmail.com"`
-3. prompts for "Enter file in which to save the key"  
-   `.ssh/id_ed25519`
-4. <kbd>return</kbd> to skip providing a passphrase
-5. open config file for editing  
-   `open ~/.ssh/config`
-6. if the command fails, then try  
-   `touch ~/.ssh/config`
-7. edit the file as shown below, then save and close the file
-   ```
-   Host ubuntu
-   HostName enp0s3_inet
-   User git
-   IdentityFile ~/.ssh/id_ed25519
-   ```
-
-**Add a new SSH key to Ubuntu Server on VirtualBox**
-
-1. Copy the public keyfile to the home folder on the Ubuntu Server on VirtualBox
-   `scp .ssh/id_rsa.pub username_for_ubuntu_server@enp0s3_inet_for_ubuntu_server:`
-2. Log into Ubuntu Server
-   `ssh username_for_ubuntu_server@enp0s3_inet_for_ubuntu_server`
-3. Add the contents of the copied public key to the authorized keys file on the Khoury server
-   `cat id_rsa.pub > .ssh/authorized_keys`
-4. Exit the Ubuntu Server
-   `exit`
-
-**Test your SSH connection**
-
-1. open Terminal on Mac
-2. connect to Ubuntu Server on VirtualBox using SSH  
-   `ssh ubuntu`
-3. you may see a warning "Are you sure you want to continue connecting?"  
-   `yes` + <kbd>return</kbd>
 
 ## Set Global Defaults for Git
 
