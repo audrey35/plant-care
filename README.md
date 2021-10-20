@@ -11,6 +11,7 @@ Directory: HW06/jeopardy
 - each file has comments describing the errors encountered and code sources
 - data/data.js adds JSON data to a MongoDB database called jeopardy in a collection called clues.
 - follow tutorial for TodoListAPI to build bulk of jeopardy API https://www.codementor.io/@olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
+- deploy database online and connect api to the db: https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku/
 
 # Daily Tasks
 

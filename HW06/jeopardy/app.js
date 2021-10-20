@@ -8,11 +8,25 @@ https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoo
 */
 var     express     = require('express'),
         app         = express(),
+        path        = require('path'),
+        hbs         = require('hbs'),
         port        = process.env.PORT || 3000,
         mongoose    = require('mongoose'),
         Clue        = require('./api/models/jeopardyModel'),
         routes      = require('./api/routes/jeopardyRoutes'), // importing route
         bodyParser  = require('body-parser');
+
+// view engine setup
+app.set("views", path.join(__dirname, "api/views"));
+
+// for res.render to render .html rather than default .jade
+// handles Error: No default engine was specified and no extension was provided.
+// https://stackoverflow.com/a/23596000
+var hbs = require("hbs");
+app.set("view engine", "html");
+app.engine("html", hbs.__express);
+
+app.use(express.json());
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -27,6 +41,10 @@ app.use(bodyParser.json());
 // app.use(function(req, res) {
 //     res.status(404).send({ url: req.originalUrl + ' not found'})
 // });
+
+app.get("/", (req, res) => {
+    res.render("documentation");
+});
 
 routes(app); // register the route
 
