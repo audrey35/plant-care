@@ -1,8 +1,16 @@
 # Heroku Links for Assignments
-- Assignment 3 (blog): https://limitless-brushlands-95987.herokuapp.com
+
 - Assignment 4 (Breakout Game): https://breakout-game-5610.herokuapp.com
 - Assignment 5 Picture of the Day (NASA): https://word-search-games.herokuapp.com
+- Assignment 6
 
+# Assignment 6 Summary
+
+Directory: HW06/jeopardy
+
+- each file has comments describing the errors encountered and code sources
+- data/data.js adds JSON data to a MongoDB database called jeopardy in a collection called clues.
+- follow tutorial for TodoListAPI to build bulk of jeopardy API https://www.codementor.io/@olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
 
 # Daily Tasks
 
@@ -74,14 +82,18 @@
 9. Close Settings
 10. Start Ubuntu Server
 11. Accept all defaults for set up
-   - if you get FAILED Cannot unmount CD rom, simply press Enter to continue
+
+- if you get FAILED Cannot unmount CD rom, simply press Enter to continue
+
 13. Restart Ubuntu Server when prompted
 14. After reboot, do a Headless Start
-15. Click Show, then run 
+15. Click Show, then run
+
 ```
 sudo apt update
 ifconfig -a
 ```
+
 16. If it failed, then run
 
 ```
@@ -138,6 +150,7 @@ if config -a
    `yes` + <kbd>return</kbd>
 
 ## How to open up specific ports on Ubuntu Server (VirtualBox)
+
 Open up specific ports on the Ubuntu Server and lock the rest of the ports by using ufw (ubuntu firewall), which can only be run by super user.
 
 ```
@@ -443,7 +456,7 @@ git remote rename heroku a3
   git remote add a4 https://git.heroku.com/breakout-game-5610.git
   git remote -v
   ```
-  
+
 - deploy app on heroku `git push a4 master:main`
 
 **Run the server and other commands simultaneously**
