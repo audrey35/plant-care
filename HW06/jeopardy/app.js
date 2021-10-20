@@ -16,7 +16,7 @@ var     express     = require('express'),
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/jeopardy');
+mongoose.connect('mongodb+srv://audrey123:123@jeopardy.jdcoe.mongodb.net/jeopardy?retryWrites=true&w=majority');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
