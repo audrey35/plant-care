@@ -29,7 +29,7 @@ const options = {
         title: "Jeopardy API",
         version: "1.0.0",
         description:
-          "A Jeopardy API",
+          "Jeopardy API contains 24,683 records. The data for the Jeopardy API is a small subset of the data available on https://www.j-archive.com/. This API uses the JSON format of the data downloaded from https://domohelp.domo.com/hc/en-us/articles/360043931814-Fun-Sample-DataSets",
         license: {
           name: "MIT",
           url: "https://spdx.org/licenses/MIT.html",
