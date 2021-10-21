@@ -2,7 +2,7 @@
 
 - Assignment 4 (Breakout Game): https://breakout-game-5610.herokuapp.com
 - Assignment 5 Picture of the Day (NASA): https://word-search-games.herokuapp.com
-- Assignment 6
+- Assignment 6 Jeopardy API: https://cs5610-audreyjo-1.herokuapp.com/api-docs
 
 # Assignment 6 Summary
 
@@ -12,6 +12,11 @@ Directory: HW06/jeopardy
 - data/data.js adds JSON data to a MongoDB database called jeopardy in a collection called clues.
 - follow tutorial for TodoListAPI to build bulk of jeopardy API https://www.codementor.io/@olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
 - deploy database online and connect api to the db: https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku/
+- follow the tutorial for adding Swagger UI 
+   - https://blog.logrocket.com/documenting-your-express-api-with-swagger/
+   - https://dev.to/kabartolo/how-to-document-an-express-api-with-swagger-ui-and-jsdoc-50do
+   - https://github.com/satansdeer/swagger-api-library/blob/master/routes/books.js
+
 
 # Daily Tasks
 
