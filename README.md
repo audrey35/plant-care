@@ -190,7 +190,7 @@ exit # exit super user shell
 4. Install Build-Essentials  
    `sudo apt-get install -y build-essential`
 5. Install npm (install the latest version as suggested)
-   `sudo npm install -g npm@7.23.0`
+   `sudo npm install -g npm@latest`
 6. Uninstall express  
    `npm uninstall express`
 7. Reinstall express version 4 to match the textbook
