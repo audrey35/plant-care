@@ -149,7 +149,9 @@ if config -a
    - if following error occurs:`-bash: .ssh/authorized_keys: No such file or directory`
       - [solution](https://askubuntu.com/a/466558)
       - `mkdir ~/.ssh`
-4. Exit the Ubuntu Server
+4. Delete the copied id_rsa.pub file
+   - `rm id_rsa.pub`
+6. Exit the Ubuntu Server
    `exit`
 
 **Test your SSH connection**
