@@ -146,6 +146,9 @@ if config -a
    `ssh username_for_ubuntu_server@enp0s3_inet_for_ubuntu_server`
 3. Add the contents of the copied public key to the authorized keys file on the Khoury server
    `cat id_rsa.pub > .ssh/authorized_keys`
+   - if following error occurs:`-bash: .ssh/authorized_keys: No such file or directory`
+      - [solution](https://askubuntu.com/a/466558)
+      - `mkdir ~/.ssh`
 4. Exit the Ubuntu Server
    `exit`
 
