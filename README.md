@@ -86,4 +86,43 @@
 
 ## Step 3: Setup Login/Registration
 
-1. Restart project by deleting all files [Commit]()
+1. Restart project by deleting all files [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/5a75d52b64056217a81c48f6e22ec32c99a9d24b)
+
+2. Create new project based off of the following tutorials
+   - [React: Creating and Hosting a Full-Stack Site](https://www.linkedin.com/learning/react-creating-and-hosting-a-full-stack-site)
+   - [React: Authentication](https://www.linkedin.com/learning/react-authentication)
+
+```
+// Create front-end and back-end
+npm init -y
+npm i bcrypt express jsonwebtoken mongoose swagger-jsdoc swagger-ui-express # 0 vulnerabilities
+npm i -D @babel/core @babel/node @babel/preset-env nodemon # 0 vulnerabilities
+npx create-react-app client # 27 vulnerabilities (16 moderate, 9 high, 2 critical)
+cd client
+npm i react-router-dom axios # 27 vulnerabilities (16 moderate, 9 high, 2 critical)
+```
+
+3. Troubleshoot vulnerabilities in client directory
+
+   - edit client/package.json: move `react-scripts` to `devDependencies`
+     - Must move react-scripts back to dependencies before deploying to Heroku
+
+   ```
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "web-vitals": "^1.1.2"
+      },
+      "devDependencies": {
+        "react-scripts": "4.0.3"
+      },
+   ```
+
+   - delete node_modules and package-lock.json `sudo rm -r node_modules package-lock.json `
+   - reinstall packages `npm i`
+   - `npm audit --production` returned 0 vulnerabilities
+
+4. Test the app
+   - client: `npm start` and http://localhost:3000
+   - server: `npm run dev` and http://localhost:8000
+     - (node:10134) Warning: To load an ES module, set "type": "module" in the package.json or use the .mjs extension.
+       - solution: add "type": "module" below "main" in package.json
