@@ -4,7 +4,7 @@ const { ObjectID } = pkg;
 import { getDbConnection } from "../db.js";
 
 process.env.JWT_SECRET = "sdfgfghfgret";
-export const updateUserInfoRoute = {
+export const updateProfileRoute = {
   path: "/api/users/:userId",
   method: "put",
   handler: async (req, res) => {

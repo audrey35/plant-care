@@ -176,6 +176,8 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 
 ### Copy back-end files from react-login
 
+[Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/29f56d7637e913d4ddaa4e5c74bd9f9760745035)
+
 1. package.json was identical, so no changes made
 2. copy back-end/src, back-end/.babelrc
    ```
@@ -195,3 +197,20 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
    - in client: `npm start`
    - at root: `npm run dev`
    - navigate to: http://localhost:3000
+
+### Changes to login/sign up/profile pages
+
+1. Change updateUserInfoRoute to updateProfileRoute
+   - edit src/routes/index.js
+     - right-click `updateUserInfoRoute`, excluding .js in import statement
+     - choose Rename Symbol, then rename it to updateProfileRoute
+   - edit src/routes/updateProfileRoute.js
+     - right-click `updateUserInfoRoute` const, click Rename Symbol, then rename to updateProfileRoute (need to have index.js open)
+2. Change UserInfoPage to ProfilePage [Commit]()
+   - edit client/src/Routes.js
+     - right-click `UserInfoPage` at the end of import statement
+     - choose Rename Symbol, then rename it to ProfilePage
+   - edit client/src/pages/ProfilePage.js
+     - right-click `UserInfoPage` const, click Rename Symbol, then rename to ProfilePage (need to have Routes.js open)
+3. Change email to username for login
+4. Change email to username for sign up

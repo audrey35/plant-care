@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { SignUpPage } from "./pages/SignUpPage";
 import { LoginPage } from "./pages/LoginPage";
-import { UserInfoPage } from "./pages/UserInfoPage";
+import { ProfilePage } from "./pages/ProfilePage";
 import { PrivateRoute } from "./auth/PrivateRoute";
 
 export const RoutesList = () => {
@@ -12,7 +12,7 @@ export const RoutesList = () => {
           path="/"
           element={
             <PrivateRoute>
-              <UserInfoPage />
+              <ProfilePage />
             </PrivateRoute>
           }
           exact
