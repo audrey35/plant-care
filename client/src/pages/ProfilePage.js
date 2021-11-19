@@ -8,7 +8,7 @@ export const ProfilePage = () => {
   const user = useUser();
   const [token, setToken] = useToken();
 
-  const { id, email, info } = user;
+  const { id, username, info } = user;
 
   // We'll use the history to navigate the user
   // programmatically later on (we're not using it yet)
@@ -81,7 +81,7 @@ export const ProfilePage = () => {
   // And here we have the JSX for our component. It's pretty straightforward
   return (
     <div className="content-container">
-      <h1>Info for {email}</h1>
+      <h1>Info for {username}</h1>
       {showSuccessMessage && (
         <div className="success">Successfully saved user data!</div>
       )}

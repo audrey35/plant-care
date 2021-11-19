@@ -8,14 +8,14 @@ export const LoginPage = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [emailValue, setEmailValue] = useState("");
+  const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
   const navigate = useNavigate();
 
   const onLoginClicked = async () => {
     const response = await axios.post("/api/login", {
-      email: emailValue,
+      username: usernameValue,
       password: passwordValue,
     });
     const { token } = response.data;
@@ -28,8 +28,8 @@ export const LoginPage = () => {
       <h1>Log In</h1>
       {errorMessage && <div className="fail">{errorMessage}</div>}
       <input
-        value={emailValue}
-        onChange={(e) => setEmailValue(e.target.value)}
+        value={usernameValue}
+        onChange={(e) => setUsernameValue(e.target.value)}
         placeholder="someone@gmail.com"
       />
       <input
@@ -39,7 +39,10 @@ export const LoginPage = () => {
         placeholder="password"
       />
       <hr />
-      <button disabled={!emailValue || !passwordValue} onClick={onLoginClicked}>
+      <button
+        disabled={!usernameValue || !passwordValue}
+        onClick={onLoginClicked}
+      >
         Log In
       </button>
       <button onClick={() => navigate("/forgot-password")}>

@@ -7,10 +7,10 @@ export const loginRoute = {
   path: "/api/login",
   method: "post",
   handler: async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     const db = getDbConnection("my-blog");
-    const user = await db.collection("users").findOne({ email });
+    const user = await db.collection("users").findOne({ username });
 
     if (!user) return res.sendStatus(401);
 
@@ -20,7 +20,7 @@ export const loginRoute = {
 
     if (isCorrect) {
       jwt.sign(
-        { id, isVerified, email, info },
+        { id, isVerified, username, info },
         process.env.JWT_SECRET,
         { expiresIn: "2d" },
         (err, token) => {

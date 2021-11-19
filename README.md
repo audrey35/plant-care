@@ -206,11 +206,14 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
      - choose Rename Symbol, then rename it to updateProfileRoute
    - edit src/routes/updateProfileRoute.js
      - right-click `updateUserInfoRoute` const, click Rename Symbol, then rename to updateProfileRoute (need to have index.js open)
-2. Change UserInfoPage to ProfilePage [Commit]()
+2. Change UserInfoPage to ProfilePage [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/40f14d8971b3cd0e1b3540579573885ed76fcfae)
    - edit client/src/Routes.js
      - right-click `UserInfoPage` at the end of import statement
      - choose Rename Symbol, then rename it to ProfilePage
    - edit client/src/pages/ProfilePage.js
      - right-click `UserInfoPage` const, click Rename Symbol, then rename to ProfilePage (need to have Routes.js open)
-3. Change email to username for login
-4. Change email to username for sign up
+3. Change email to username for login, sign up and profile
+   - replace 'Email' with 'Username': client/src/pages/LoginPage and SignUpPage
+   - replace 'email' with 'username':
+     - client/src/pages/LoginPage, ProfilePage, SignUpPage
+     - src/routes/loginRoute, signUpRoute, updateProfileRoute

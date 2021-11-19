@@ -7,10 +7,10 @@ export const signUpRoute = {
   path: "/api/signup",
   method: "post",
   handler: async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     const db = getDbConnection("my-blog");
-    const user = await db.collection("users").findOne({ email });
+    const user = await db.collection("users").findOne({ username });
 
     if (user) {
       res.sendStatus(409);
@@ -25,7 +25,7 @@ export const signUpRoute = {
     };
 
     const result = await db.collection("users").insertOne({
-      email,
+      username,
       passwordHash,
       info: startingInfo,
       isVerified: false,
@@ -35,7 +35,7 @@ export const signUpRoute = {
     jwt.sign(
       {
         id: insertedId,
-        email,
+        username,
         info: startingInfo,
         isVerified: false,
       },

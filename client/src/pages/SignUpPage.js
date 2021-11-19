@@ -8,7 +8,7 @@ export const SignUpPage = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [emailValue, setEmailValue] = useState("");
+  const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
 
@@ -16,7 +16,7 @@ export const SignUpPage = () => {
 
   const onSignUpClicked = async () => {
     const response = await axios.post("/api/signup", {
-      email: emailValue,
+      username: usernameValue,
       password: passwordValue,
     });
     const { token } = response.data;
@@ -29,8 +29,8 @@ export const SignUpPage = () => {
       <h1>Sign Up</h1>
       {errorMessage && <div className="fail">{errorMessage}</div>}
       <input
-        value={emailValue}
-        onChange={(e) => setEmailValue(e.target.value)}
+        value={usernameValue}
+        onChange={(e) => setUsernameValue(e.target.value)}
         placeholder="someone@gmail.com"
       />
       <input
@@ -48,7 +48,7 @@ export const SignUpPage = () => {
       <hr />
       <button
         disabled={
-          !emailValue ||
+          !usernameValue ||
           !passwordValue ||
           passwordValue !== confirmPasswordValue
         }
