@@ -134,6 +134,8 @@ npm i react-router-dom axios # 27 vulnerabilities (16 moderate, 9 high, 2 critic
 
 ### Copy front-end files from react-login
 
+[Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/78fdd93a10c65a6876a8e4ba405f8012858b1a07)
+
 1. Clone cs5610_audreyjo in another directory outside of cs5610_audreyjo dir for this project
    - `git clone neu:audreyjo/cs5610_audreyjo.git`
 2. Switch to react-login branch in the duplicate copy
@@ -165,7 +167,31 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 
 ### Fix copied front-end files
 
+[Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/8f759cc673b6af5baf9a7964a2089c7e9f7f685f)
+
 1. add proxy in client/package.json
    - add `"proxy": "http://localhost:8080/",` below `"private/"`
 2. edit client/src/auth/PrivateRoute.js
    - [solution](https://dev.to/iamandrewluca/private-route-in-react-router-v6-lg5): change to a function
+
+### Copy back-end files from react-login
+
+1. package.json was identical, so no changes made
+2. copy back-end/src, back-end/.babelrc
+   ```
+   cp -r duplicate/cs5610_audreyjo/back-end/.babelrc cs5610_audreyjo
+   cp -r duplicate/cs5610_audreyjo/back-end/src cs5610_audreyjo
+   ```
+3. add `process.env.JWT_SECRET = "sdfgfghfgret";` to src/routes/loginRoute.js, signUpRoute.js, updateUserInfoRoute.js
+
+   - localhost:8000/api/signup and localhost:8000/api/login works as expected
+
+4. move server.js to root folder
+   - `mv src/server.js ./server.js`
+5. add src in front of routes in index and db import statements: `"./src/routes/index.js"`
+
+6. test full-stack app
+
+   - in client: `npm start`
+   - at root: `npm run dev`
+   - navigate to: http://localhost:3000
