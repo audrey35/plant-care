@@ -239,5 +239,15 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
       - src/routes/loginRoute.js: for logging in
       - src/routes/viewProfileRoute.js: for viewing profile page (no edits)
       - client/src/pages/ProfileViewPage.js: for viewing profile page (no edits)
-11. Fix view profile so that it can be viewed without logging in
+11. Fix view profile so that it can be viewed without logging in [Commit](https://github.ccs.neu.edu/audreyjo/f201fb2f6fcb7960ea51eec1b993874ab70c6db5)
     - fixed so that profile/non-existing-username takes you back to home page
+
+## Step 4. Add Home Page
+
+[Commit](https://github.ccs.neu.edu/audreyjo/)
+
+## Step 5. Add Forum
+
+## Step 6. Add Plant Cards
+
+## Step 7. Add Navigation

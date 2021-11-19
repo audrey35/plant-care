@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ProfileEditPage } from "./pages/ProfileEditPage";
@@ -10,6 +11,7 @@ export const RoutesList = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/profile"
           element={
