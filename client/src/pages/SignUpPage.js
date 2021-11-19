@@ -31,7 +31,7 @@ export const SignUpPage = () => {
       <input
         value={usernameValue}
         onChange={(e) => setUsernameValue(e.target.value)}
-        placeholder="someone@gmail.com"
+        placeholder="username"
       />
       <input
         value={passwordValue}

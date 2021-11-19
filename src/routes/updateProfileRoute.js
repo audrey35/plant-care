@@ -11,9 +11,9 @@ export const updateProfileRoute = {
     const { authorization } = req.headers;
     const { userId } = req.params;
 
-    const updates = (({ favoriteFood, hairColor, bio }) => ({
-      favoriteFood,
-      hairColor,
+    const updates = (({ favoritePlant, email, bio }) => ({
+      favoritePlant,
+      email,
       bio,
     }))(req.body);
 

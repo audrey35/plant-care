@@ -16,8 +16,8 @@ export const ProfilePage = () => {
 
   // These states are bound to the values of the text inputs
   // on the page (see JSX below).
-  const [favoriteFood, setFavoriteFood] = useState(info.favoriteFood || "");
-  const [hairColor, setHairColor] = useState(info.hairColor || "");
+  const [favoritePlant, setFavoritePlant] = useState(info.favoritePlant || "");
+  const [email, setEmail] = useState(info.email || "");
   const [bio, setBio] = useState(info.bio || "");
 
   // These state variables control whether or not we show
@@ -46,8 +46,8 @@ export const ProfilePage = () => {
       const response = await axios.put(
         `/api/users/${id}`,
         {
-          favoriteFood,
-          hairColor,
+          favoritePlant,
+          email,
           bio,
         },
         {
@@ -73,15 +73,15 @@ export const ProfilePage = () => {
   const resetValues = () => {
     // Reset the text input values to
     // their starting values (the data we loaded from the server)
-    setFavoriteFood(info.favoriteFood);
-    setHairColor(info.hairColor);
+    setFavoritePlant(info.favoritePlant);
+    setEmail(info.email);
     setBio(info.bio);
   };
 
   // And here we have the JSX for our component. It's pretty straightforward
   return (
     <div className="content-container">
-      <h1>Info for {username}</h1>
+      <h1>{username}'s Profile</h1>
       {showSuccessMessage && (
         <div className="success">Successfully saved user data!</div>
       )}
@@ -91,22 +91,19 @@ export const ProfilePage = () => {
         </div>
       )}
       <label>
-        Favorite Food:
-        <input
-          onChange={(e) => setFavoriteFood(e.target.value)}
-          value={favoriteFood}
-        />
-      </label>
-      <label>
-        Hair Color:
-        <input
-          onChange={(e) => setHairColor(e.target.value)}
-          value={hairColor}
-        />
-      </label>
-      <label>
         Bio:
         <input onChange={(e) => setBio(e.target.value)} value={bio} />
+      </label>
+      <label>
+        Email:
+        <input onChange={(e) => setEmail(e.target.value)} value={email} />
+      </label>
+      <label>
+        Favorite Plant:
+        <input
+          onChange={(e) => setFavoritePlant(e.target.value)}
+          value={favoritePlant}
+        />
       </label>
       <hr />
       <button onClick={saveChanges}>Save Changes</button>

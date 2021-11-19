@@ -212,8 +212,12 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
      - choose Rename Symbol, then rename it to ProfilePage
    - edit client/src/pages/ProfilePage.js
      - right-click `UserInfoPage` const, click Rename Symbol, then rename to ProfilePage (need to have Routes.js open)
-3. Change email to username for login, sign up and profile
+3. Change email to username for login, sign up and profile [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/46129e5656107353856b94ffe418b9fec638bbcc)
    - replace 'Email' with 'Username': client/src/pages/LoginPage and SignUpPage
    - replace 'email' with 'username':
      - client/src/pages/LoginPage, ProfilePage, SignUpPage
      - src/routes/loginRoute, signUpRoute, updateProfileRoute
+4. Change `Info for {username}` to `{username}'s Profile` (client/src/pages/ProfilePage.js)
+5. Change Favorite Food, Hair Color, Bio to Bio, Email, Favorite Plant
+   - edit client/src/pages/ProfilePage.js and src/routes/updateProfileRoute.js
+6. Remove Forgot your Password? from LoginPage [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/)

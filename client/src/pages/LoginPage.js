@@ -30,7 +30,7 @@ export const LoginPage = () => {
       <input
         value={usernameValue}
         onChange={(e) => setUsernameValue(e.target.value)}
-        placeholder="someone@gmail.com"
+        placeholder="username"
       />
       <input
         value={passwordValue}
@@ -44,9 +44,6 @@ export const LoginPage = () => {
         onClick={onLoginClicked}
       >
         Log In
-      </button>
-      <button onClick={() => navigate("/forgot-password")}>
-        Forgot your password?
       </button>
       <button onClick={() => navigate("/signup")}>
         Don't have an account? Sign Up
