@@ -1,8 +1,26 @@
 import express from "express";
+import { routes } from "./src/routes/index.js";
+import { initializeDbConnection } from "./src/db.js";
+
+const PORT = process.env.PORT || 8000;
 
 const app = express();
-const port = process.env.PORT || 8000;
 
-app.get("/", (req, res) => res.send("Hello!"));
+// This allows us to access the body of POST/PUT
+// requests in our route handlers (as req.body)
+app.use(express.json());
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+// Add all the routes to our Express server
+// exported from routes/index.js
+routes.forEach((route) => {
+  app[route.method](route.path, route.handler);
+});
+
+// Connect to the database, then start the server.
+// This prevents us from having to create a new DB
+// connection for every request.
+initializeDbConnection().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+  });
+});

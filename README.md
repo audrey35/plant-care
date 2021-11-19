@@ -86,11 +86,16 @@
 
 ## Step 3: Setup Login/Registration
 
-1. Restart project by deleting all files [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/5a75d52b64056217a81c48f6e22ec32c99a9d24b)
+### Restart project by deleting all files
 
-2. Create new project based off of the following tutorials
-   - [React: Creating and Hosting a Full-Stack Site](https://www.linkedin.com/learning/react-creating-and-hosting-a-full-stack-site)
-   - [React: Authentication](https://www.linkedin.com/learning/react-authentication)
+[Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/5a75d52b64056217a81c48f6e22ec32c99a9d24b)
+
+### Create new project based off of tutorials
+
+[Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/66ab9fd4899e239f8408bfae00b8cfb8c5a8d6c1)
+
+- [React: Creating and Hosting a Full-Stack Site](https://www.linkedin.com/learning/react-creating-and-hosting-a-full-stack-site)
+- [React: Authentication](https://www.linkedin.com/learning/react-authentication)
 
 ```
 // Create front-end and back-end
@@ -126,3 +131,46 @@ npm i react-router-dom axios # 27 vulnerabilities (16 moderate, 9 high, 2 critic
    - server: `npm run dev` and http://localhost:8000
      - (node:10134) Warning: To load an ES module, set "type": "module" in the package.json or use the .mjs extension.
        - solution: add "type": "module" below "main" in package.json
+
+### Copy front-end files from react-login
+
+1. Clone cs5610_audreyjo in another directory outside of cs5610_audreyjo dir for this project
+   - `git clone neu:audreyjo/cs5610_audreyjo.git`
+2. Switch to react-login branch in the duplicate copy
+   - `git checkout -t origin/react-login`
+
+**Copy Front-End files from react-login branch**
+
+- package.json was identical, so no changes made
+- copy front-end/public and front-end/src folders
+
+```
+cp -r duplicate/cs5610_audreyjo/front-end/public cs5610_audreyjo
+cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
+```
+
+- `npm start` in client directory returns `./src/auth/PrivateRoute.js Attempted import error: 'Redirect' is not exported from 'react-router-dom'.`
+  - [solution](https://stackoverflow.com/a/69408107): replace Redirect with Navigate in src/auth/PrivateRoute.js
+- `./src/Routes.js Attempted import error: 'Switch' is not exported from 'react-router-dom'.`
+  - [solution](https://stackoverflow.com/a/69849271): fix src/Routes.js
+- `./src/Routes.js SyntaxError: /home/cs5610/cs5610_audreyjo/client/src/Routes.js: Identifier 'Routes' has already been declared. (7:13)`
+  - rename `const Routes` to `const RoutesList`
+- `./src/App.js Attempted import error: 'Routes' is not exported from './Routes'.`
+  - rename `Routes` to `RoutesList`
+- `./src/pages/SignUpPage.js Attempted import error: 'useHistory' is not exported from 'react-router-dom'.`
+  - [solution](https://stackoverflow.com/a/66971821): useHistory() is replaced by useNavigate()
+  - same for src/pages/LoginPage.js and src/pages/UserInfoPage.js
+- `Error: [PrivateRoute] is not a <Route> component. All component children of <Routes> must be a <Route> or <React.Fragment>`
+  - [solution](https://dev.to/iamandrewluca/private-route-in-react-router-v6-lg5): fix PrivateRoute and Route tags in Routes.js
+
+### Copy back-end files from react-login
+
+- package.json was identical, so no changes made
+- copy back-end/src, back-end/.babelrc
+
+```
+cp -r duplicate/cs5610_audreyjo/back-end/.babelrc cs5610_audreyjo
+cp -r duplicate/cs5610_audreyjo/back-end/src cs5610_audreyjo
+```
+
+-
