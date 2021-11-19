@@ -20,7 +20,7 @@ export const LoginPage = () => {
     });
     const { token } = response.data;
     setToken(token);
-    navigate("/");
+    navigate("/profile");
   };
 
   return (

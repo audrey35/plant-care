@@ -223,10 +223,11 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 6. Remove Forgot your Password? from LoginPage [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/45635f86becde0dc335470ebe84e1e25794c2a12)
 7. Change profile URL from '/' to '/profile' on client/src/Routes.js (allows edits)
    - rename ProfilePage to ProfileEditPage
-8. Create profile URL '/profile/:username' on client/src/Routes.js (read only)
+8. Create profile URL '/profile/:username' on client/src/Routes.js (read only) [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/1376edd829d1563aa999854cfbd188229409d8a0)
    - update client/src/Routes.js
    - create src/routes/viewProfileRoute.js and copy from editProfileRoute
      - refer to app.get("/api/articles/:name" in react-blog branch's server.js
    - create client/src/pages/ProfileViewPage.js and copy from ProfileEditPage
      - remove buttons and onChange
    - add viewProfileRoute to src/routes/index.js
+9. Fix navigation issues [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/)
