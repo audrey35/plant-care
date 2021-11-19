@@ -8,7 +8,7 @@ export const ProfileViewPage = () => {
   const user = useUser();
   const [token, setToken] = useToken();
 
-  const { id, username, info } = user;
+  const { id, username, publicInfo } = user;
 
   // We'll use the history to navigate the user
   // programmatically later on (we're not using it yet)
@@ -16,9 +16,10 @@ export const ProfileViewPage = () => {
 
   // These states are bound to the values of the text inputs
   // on the page (see JSX below).
-  const [favoritePlant, setFavoritePlant] = useState(info.favoritePlant || "");
-  const [email, setEmail] = useState(info.email || "");
-  const [bio, setBio] = useState(info.bio || "");
+  const [bio, setBio] = useState(publicInfo.bio || "");
+  const [favoritePlant, setFavoritePlant] = useState(
+    publicInfo.favoritePlant || ""
+  );
 
   // These state variables control whether or not we show
   // the success and error message sections after making
@@ -46,9 +47,8 @@ export const ProfileViewPage = () => {
       const response = await axios.put(
         `/api/users/${id}`,
         {
-          favoritePlant,
-          email,
           bio,
+          favoritePlant,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -73,9 +73,8 @@ export const ProfileViewPage = () => {
   const resetValues = () => {
     // Reset the text input values to
     // their starting values (the data we loaded from the server)
-    setFavoritePlant(info.favoritePlant);
-    setEmail(info.email);
-    setBio(info.bio);
+    setBio(publicInfo.bio);
+    setFavoritePlant(publicInfo.favoritePlant);
   };
 
   // And here we have the JSX for our component. It's pretty straightforward
@@ -84,15 +83,11 @@ export const ProfileViewPage = () => {
       <h1>{username}'s Profile</h1>
       <label>
         Bio:
-        <input value={bio} />
-      </label>
-      <label>
-        Email:
-        <input value={email} />
+        <input value={bio} readOnly />
       </label>
       <label>
         Favorite Plant:
-        <input value={favoritePlant} />
+        <input value={favoritePlant} readOnly />
       </label>
     </div>
   );

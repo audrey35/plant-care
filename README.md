@@ -230,4 +230,12 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
    - create client/src/pages/ProfileViewPage.js and copy from ProfileEditPage
      - remove buttons and onChange
    - add viewProfileRoute to src/routes/index.js
-9. Fix navigation issues [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/)
+9. Fix navigation issues [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/05fb4fd3976a26bfe4effa6f06bb51ebfcedecdb)
+10. Split info field in db into publicInfo and privateInfo fields
+    - replace info with publicInfo and privateInfo
+      - src/routes/signUpRoute.js: for signing up
+      - client/src/pages/ProfileEditPage.js: for editing profile page
+      - src/routes/updateProfileRoute.js: for editing profile page
+      - src/routes/loginRoute.js: for logging in
+      - src/routes/viewProfileRoute.js: for viewing profile page (no edits)
+      - client/src/pages/ProfileViewPage.js: for viewing profile page (no edits)

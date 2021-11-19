@@ -4,15 +4,15 @@ const { ObjectID } = pkg;
 import { getDbConnection } from "../db.js";
 
 export const viewProfileRoute = {
-  path: "/api/users/:username",
+  path: "/api/users/:userId",
   method: "get",
   handler: async (req, res) => {
-    const { userName } = req.params;
+    const { userId } = req.params;
 
     const db = getDbConnection("my-blog");
 
     // find user matching the username in the url
-    const user = await db.collection("users").findOne({ username: userName });
+    const user = await db.collection("users").findOne({ username: userId });
 
     res.status(200).json(user);
   },

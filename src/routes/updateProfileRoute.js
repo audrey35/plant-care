@@ -11,10 +11,13 @@ export const updateProfileRoute = {
     const { authorization } = req.headers;
     const { userId } = req.params;
 
-    const updates = (({ favoritePlant, email, bio }) => ({
-      favoritePlant,
-      email,
+    const publicUpdates = (({ bio, favoritePlant }) => ({
       bio,
+      favoritePlant,
+    }))(req.body);
+
+    const privateUpdates = (({ email }) => ({
+      email,
     }))(req.body);
 
     if (!authorization) {
@@ -40,13 +43,13 @@ export const updateProfileRoute = {
         .collection("users")
         .findOneAndUpdate(
           { _id: ObjectID(id) },
-          { $set: { info: updates } },
+          { $set: { publicInfo: publicUpdates, privateInfo: privateUpdates } },
           { returnOriginal: false }
         );
-      const { username, isVerified, info } = result.value;
+      const { username, isVerified, publicInfo, privateInfo } = result.value;
 
       jwt.sign(
-        { id, username, isVerified, info },
+        { id, username, isVerified, publicInfo, privateInfo },
         process.env.JWT_SECRET,
         { expiresIn: "2d" },
         (err, token) => {

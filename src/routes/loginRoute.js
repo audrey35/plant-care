@@ -14,13 +14,13 @@ export const loginRoute = {
 
     if (!user) return res.sendStatus(401);
 
-    const { _id: id, isVerified, passwordHash, info } = user;
+    const { _id: id, isVerified, passwordHash, publicInfo, privateInfo } = user;
 
     const isCorrect = await bcrypt.compare(password, passwordHash);
 
     if (isCorrect) {
       jwt.sign(
-        { id, isVerified, username, info },
+        { id, isVerified, username, publicInfo, privateInfo },
         process.env.JWT_SECRET,
         { expiresIn: "2d" },
         (err, token) => {

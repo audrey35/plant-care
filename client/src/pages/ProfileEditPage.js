@@ -8,7 +8,7 @@ export const ProfileEditPage = () => {
   const user = useUser();
   const [token, setToken] = useToken();
 
-  const { id, username, info } = user;
+  const { id, username, publicInfo, privateInfo } = user;
 
   // We'll use the history to navigate the user
   // programmatically later on (we're not using it yet)
@@ -16,9 +16,11 @@ export const ProfileEditPage = () => {
 
   // These states are bound to the values of the text inputs
   // on the page (see JSX below).
-  const [favoritePlant, setFavoritePlant] = useState(info.favoritePlant || "");
-  const [email, setEmail] = useState(info.email || "");
-  const [bio, setBio] = useState(info.bio || "");
+  const [bio, setBio] = useState(publicInfo.bio || "");
+  const [favoritePlant, setFavoritePlant] = useState(
+    publicInfo.favoritePlant || ""
+  );
+  const [email, setEmail] = useState(privateInfo.email || "");
 
   // These state variables control whether or not we show
   // the success and error message sections after making
@@ -46,9 +48,9 @@ export const ProfileEditPage = () => {
       const response = await axios.put(
         `/api/users/${id}`,
         {
+          bio,
           favoritePlant,
           email,
-          bio,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -73,9 +75,9 @@ export const ProfileEditPage = () => {
   const resetValues = () => {
     // Reset the text input values to
     // their starting values (the data we loaded from the server)
-    setFavoritePlant(info.favoritePlant);
-    setEmail(info.email);
-    setBio(info.bio);
+    setBio(publicInfo.bio);
+    setFavoritePlant(publicInfo.favoritePlant);
+    setEmail(privateInfo.email);
   };
 
   // And here we have the JSX for our component. It's pretty straightforward
@@ -95,15 +97,15 @@ export const ProfileEditPage = () => {
         <input onChange={(e) => setBio(e.target.value)} value={bio} />
       </label>
       <label>
-        Email:
-        <input onChange={(e) => setEmail(e.target.value)} value={email} />
-      </label>
-      <label>
         Favorite Plant:
         <input
           onChange={(e) => setFavoritePlant(e.target.value)}
           value={favoritePlant}
         />
+      </label>
+      <label>
+        Email:
+        <input onChange={(e) => setEmail(e.target.value)} value={email} />
       </label>
       <hr />
       <button onClick={saveChanges}>Save Changes</button>

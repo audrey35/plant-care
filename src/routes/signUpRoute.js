@@ -18,17 +18,21 @@ export const signUpRoute = {
 
     const passwordHash = await bcrypt.hash(password, 10);
 
-    const startingInfo = {
-      hairColor: "",
-      favoriteFood: "",
+    const publicInfo = {
       bio: "",
+      favoritePlant: "",
+    };
+
+    const privateInfo = {
+      email: "",
     };
 
     const result = await db.collection("users").insertOne({
       username,
       passwordHash,
-      info: startingInfo,
       isVerified: false,
+      publicInfo,
+      privateInfo,
     });
     const { insertedId } = result;
 
@@ -36,8 +40,9 @@ export const signUpRoute = {
       {
         id: insertedId,
         username,
-        info: startingInfo,
         isVerified: false,
+        publicInfo,
+        privateInfo,
       },
       process.env.JWT_SECRET,
       {
