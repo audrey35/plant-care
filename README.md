@@ -231,7 +231,7 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
      - remove buttons and onChange
    - add viewProfileRoute to src/routes/index.js
 9. Fix navigation issues [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/05fb4fd3976a26bfe4effa6f06bb51ebfcedecdb)
-10. Split info field in db into publicInfo and privateInfo fields
+10. Split info field in db into publicInfo and privateInfo fields [Commit](https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo/commit/a24feb37c772145fb22fe6d7a931222c6243e8b3)
     - replace info with publicInfo and privateInfo
       - src/routes/signUpRoute.js: for signing up
       - client/src/pages/ProfileEditPage.js: for editing profile page
@@ -239,3 +239,5 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
       - src/routes/loginRoute.js: for logging in
       - src/routes/viewProfileRoute.js: for viewing profile page (no edits)
       - client/src/pages/ProfileViewPage.js: for viewing profile page (no edits)
+11. Fix view profile so that it can be viewed without logging in
+    - fixed so that profile/non-existing-username takes you back to home page
