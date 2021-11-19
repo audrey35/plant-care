@@ -4,7 +4,7 @@ import axios from "axios";
 import { useToken } from "../auth/useToken";
 import { useUser } from "../auth/useUser";
 
-export const ProfilePage = () => {
+export const ProfileEditPage = () => {
   const user = useUser();
   const [token, setToken] = useToken();
 
