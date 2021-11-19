@@ -1,10 +1,8 @@
 import { Navigate, Route } from "react-router-dom";
 import { useUser } from "./useUser";
 
-export const PrivateRoute = (props) => {
+export function PrivateRoute({ children }) {
   const user = useUser();
 
-  if (!user) return <Navigate to="/login" />;
-
-  return <Route {...props} />;
-};
+  return user ? children : <Navigate to="/login" />;
+}

@@ -163,14 +163,9 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 - `Error: [PrivateRoute] is not a <Route> component. All component children of <Routes> must be a <Route> or <React.Fragment>`
   - [solution](https://dev.to/iamandrewluca/private-route-in-react-router-v6-lg5): fix PrivateRoute and Route tags in Routes.js
 
-### Copy back-end files from react-login
+### Fix copied front-end files
 
-- package.json was identical, so no changes made
-- copy back-end/src, back-end/.babelrc
-
-```
-cp -r duplicate/cs5610_audreyjo/back-end/.babelrc cs5610_audreyjo
-cp -r duplicate/cs5610_audreyjo/back-end/src cs5610_audreyjo
-```
-
--
+1. add proxy in client/package.json
+   - add `"proxy": "http://localhost:8080/",` below `"private/"`
+2. edit client/src/auth/PrivateRoute.js
+   - [solution](https://dev.to/iamandrewluca/private-route-in-react-router-v6-lg5): change to a function
