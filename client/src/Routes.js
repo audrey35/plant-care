@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import ForumPage from "./pages/ForumPage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ProfileEditPage } from "./pages/ProfileEditPage";
@@ -21,6 +22,7 @@ export const RoutesList = () => {
           }
         />
         <Route path="/profile/:username" element={<ProfileViewPage />} />
+        <Route path="/forum" element={<ForumPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="*" element={<NotFoundPage />} />

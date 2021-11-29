@@ -244,10 +244,25 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 
 ## Step 4. Add Home Page
 
-[Commit](https://github.ccs.neu.edu/audreyjo/)
+[Commit](https://github.ccs.neu.edu/audreyjo/a1366fb88d1d06b45e0cc20be91d6847f2764acb)
 
 ## Step 5. Add Forum
+
+### Add ForumPage (list of posts)
+
+1. add bootstrap to client/public/index.html
+2. add css copied from react-blog branch (source: LinkedIn Learning) to client/src/index.css
+3. add /forum route to client/src/Routes.js
+4. add client/src/pagesForumPage.js copied from react-blog branch/client/src/pages/ArticlesListPage.js
+5. add client/src/components/PostsList.js copied from react-blog branch/client/src/components/ArticlesList.js
+6. add post-content.js copied from react-blog branch/client/src/pages/article-content.js
+
+### Replace post-content.js with Mongoose
+
+### Add PostPage (a single post with comments)
 
 ## Step 6. Add Plant Cards
 
 ## Step 7. Add Navigation
+
+## Step 8. Use Bootstrap
