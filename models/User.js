@@ -5,8 +5,9 @@ const { Schema } = mongoose;
 const UserSchema = new Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
-  publicInfo: [{ bio: String, favoritePlant: String }],
-  privateInfo: [{ email: String }],
+  bio: { type: String, default: "" },
+  favoritePlant: { type: String, default: "" },
+  email: { type: String, default: "" },
 });
 
 // replace module.exports = User with export var User: https://stackoverflow.com/a/34645767

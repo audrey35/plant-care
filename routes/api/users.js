@@ -2,9 +2,11 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import passport from "passport";
 import keys from "../../config/keys.js";
 import { validateRegisterInput } from "../../validation/register.js";
 import { validateLoginInput } from "../../validation/login.js";
+import { validateProfileInput } from "../../validation/profile.js";
 import { User } from "../../models/User.js";
 
 var router = express.Router();
@@ -97,5 +99,44 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+// @route PUT api/users/:username
+// @desc Update user information
+// @access Private
+router.put(
+  "/:username",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const userName = req.params.username;
+    const { bio, favoritePlant, email } = req.body;
+
+    // Form validation
+    const { errors, isValid } = validateProfileInput({ email: email });
+
+    // Check validation
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    // Update user profile info
+    User.findOneAndUpdate(
+      { username: userName },
+      {
+        $set: {
+          bio: bio,
+          favoritePlant: favoritePlant,
+          email: email,
+        },
+      },
+      { returnOriginal: false }
+    ).then((user) => {
+      if (user) {
+        return res.status(200).json(user);
+      } else {
+        return res.status(404).json({ usernotfound: "User not found" });
+      }
+    });
+  }
+);
 
 export default router;

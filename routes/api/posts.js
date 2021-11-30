@@ -2,8 +2,8 @@
 import express from "express";
 import passport from "passport";
 import { Post } from "../../models/Post.js";
-import { User } from "../../models/User.js";
 import { validatePostInput } from "../../validation/post.js";
+import { validateCommentInput } from "../../validation/comment.js";
 
 var router = express.Router();
 
@@ -43,6 +43,7 @@ router.post(
           title: postTitle,
           text: postText,
           username: req.user.username,
+          createdDate: Date.now(),
         });
         newPost
           .save()
@@ -69,10 +70,10 @@ router.get("/:name", (req, res) => {
   });
 });
 
-// @route POST api/posts/:name/upvote
+// @route PUT api/posts/:name/like
 // @desc Like a post
 // @access Public
-router.post("/:name/like", (req, res) => {
+router.put("/:name/like", (req, res) => {
   const postName = req.params.name;
 
   // increment like
@@ -89,20 +90,38 @@ router.post("/:name/like", (req, res) => {
   });
 });
 
-// @route POST api/posts/:name/comment
+// @route PUT api/posts/:name/comment
 // @desc Comment on a post
 // @access Private
-router.post(
+router.put(
   "/:name/comment",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const postName = req.params.name;
     const { text } = req.body;
 
+    // Form validation
+    const { errors, isValid } = validateCommentInput({
+      text: text,
+    });
+
+    // Check validation
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
     // Add comment to the post
     Post.findOneAndUpdate(
       { name: postName },
-      { $push: { comments: { username: req.user.username, text: text } } },
+      {
+        $push: {
+          comments: {
+            username: req.user.username,
+            text: text,
+            createdDate: Date.now(),
+          },
+        },
+      },
       { returnOriginal: false }
     ).then((post2) => {
       if (post2) {

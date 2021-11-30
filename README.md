@@ -250,6 +250,8 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 
 ### Add ForumPage (list of posts)
 
+[Commit](https://github.ccs.neu.edu/audreyjo/5aad388d7e3076bbd146f0a25e3aec12170aaa99)
+
 1. add bootstrap to client/public/index.html
 2. add css copied from react-blog branch (source: LinkedIn Learning) to client/src/index.css
 3. add /forum route to client/src/Routes.js
@@ -258,6 +260,8 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 6. add post-content.js copied from react-blog branch/client/src/pages/article-content.js
 
 ## Step 6. Restart and setup back-end for authentication & forum
+
+[Commit](https://github.ccs.neu.edu/audreyjo/363664041c750f3832015130e20615933ecdbe0e)
 
 1. Copy files from react-blog branch
 2. Install packages for backend
@@ -268,3 +272,5 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 3. Implement login/registration by following [tutorial](https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669)
 4. Convert Article to Post from react-blog branch (the code comes from [LinkedIn Learning](https://www.linkedin.com/learning/react-creating-and-hosting-a-full-stack-site/setting-up-a-react-project), check react-blog branch README for more info)
 5. Authenticate when trying to add a post or comment by following [tutorial](https://github.com/rishipr/teams)
+
+## Step 7. Add update user for back-end

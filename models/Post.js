@@ -8,7 +8,14 @@ const PostSchema = new Schema({
   text: { type: String, required: true },
   username: { type: String, required: true },
   likes: { type: Number, default: 0 },
-  comments: [{ username: String, text: String }],
+  createdDate: Date,
+  comments: [
+    {
+      text: String,
+      username: String,
+      createdDate: Date,
+    },
+  ],
 });
 
 // replace module.exports = User with export var User: https://stackoverflow.com/a/34645767
