@@ -257,12 +257,14 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 5. add client/src/components/PostsList.js copied from react-blog branch/client/src/components/ArticlesList.js
 6. add post-content.js copied from react-blog branch/client/src/pages/article-content.js
 
-### Replace post-content.js with Mongoose
+## Step 6. Restart and setup back-end for authentication & forum
 
-### Add PostPage (a single post with comments)
+1. Copy files from react-blog branch
+2. Install packages for backend
 
-## Step 6. Add Plant Cards
+- `npm i bcryptjs express jsonwebtoken mongoose swagger-jsdoc swagger-ui-express passport passport-jwt is-empty validator concurrently # 0 vulnerabilities`
+- `npm i -D nodemon # 0 vulnerabilities`
 
-## Step 7. Add Navigation
-
-## Step 8. Use Bootstrap
+3. Implement login/registration by following [tutorial](https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669)
+4. Convert Article to Post from react-blog branch (the code comes from [LinkedIn Learning](https://www.linkedin.com/learning/react-creating-and-hosting-a-full-stack-site/setting-up-a-react-project), check react-blog branch README for more info)
+5. Authenticate when trying to add a post or comment by following [tutorial](https://github.com/rishipr/teams)

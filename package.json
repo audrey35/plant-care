@@ -6,8 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon --exec babel-node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -20,21 +22,23 @@
   ],
   "author": "Audrey Jo",
   "license": "ISC",
-  "engines": {
-    "node": "16.13.0"
-  },
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^6.4.0",
     "express": "^4.17.1",
+    "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.13",
+    "mongoose": "^6.0.14",
+    "passport": "^0.5.0",
+    "passport-jwt": "^4.0.0",
     "swagger-jsdoc": "^6.1.0",
-    "swagger-ui-express": "^4.1.6"
+    "swagger-ui-express": "^4.1.6",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/node": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
     "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "16.13.0"
   }
 }

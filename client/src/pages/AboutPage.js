@@ -1,8 +1,8 @@
 import React from "react";
 
-const HomePage = () => (
+const AboutPage = () => (
   <>
-    <h1>Hello, welcome to my blog!</h1>
+    <h1>About me</h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Leo integer malesuada
@@ -44,4 +44,4 @@ const HomePage = () => (
   </>
 );
 
-export default HomePage;
+export default AboutPage;

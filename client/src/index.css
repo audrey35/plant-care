@@ -1,114 +1,13 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-h1 {
-  text-align: center;
-}
-
-hr {
-  margin: 32px 0;
-}
-
-button,
-input {
-  border-radius: 8px;
-  box-sizing: border-box;
-  display: block;
-  font-size: 16px;
-  margin: 8px 0;
-  padding: 8px;
-  width: 100%;
-}
-
-input {
-  border: 1px solid black;
-}
-
-button {
-  border: 1px solid black;
-  cursor: pointer;
-}
-
-.page-container {
-  display: flex;
-  background-color: #ddd;
-  min-height: 100vh;
-  min-width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.content-container {
-  background-color: white;
-  border-radius: 8px;
-  min-width: 300px;
-  max-width: 800px;
-  padding: 32px;
-}
-
-/* From react-blog branch/client/src/App.css */
-
-.post-list-item {
-  text-decoration: none;
-  color: "CDB4DB";
-  padding: 16px 0 0 0;
-}
-
-#add-comment-form {
-  border-bottom: 2px solid "CDB4DB";
-  padding: 16px;
-}
-
-#add-comment-form h3 {
-  margin-bottom: 16px;
-}
-
-#add-comment-form input,
-textarea {
-  display: block;
-  /* width: 300px;
-  padding: 8px;
-  border-radius: 8px; */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px;
-  border: 2px solid "CDB4DB";
-  /* margin-bottom: 16px; */
-}
-
-#upvotes-section button,
-p {
-  display: inline-block;
-  margin-right: 16px;
-}
-
-.comment {
-  border-bottom: 2px solid "CDB4DB";
-  padding: 16px;
-}
-
-.success {
-  background-color: #90ee90;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  padding: 16px;
-  text-align: center;
-}
-
-.fail {
-  background-color: #ffcccb;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  padding: 16px;
-  text-align: center;
 }
