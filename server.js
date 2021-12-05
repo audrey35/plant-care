@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import keys from "./config/keys.js";
 const { port, mongoURI } = keys;
 import passport from "passport";
+import cors from "cors";
 import users from "./routes/api/users.js";
 import posts from "./routes/api/posts.js";
 import passportFunc from "./config/passport.js";
@@ -18,6 +19,9 @@ const app = express();
 // Bodyparser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+//Allowing CORS (import cors)
+app.use(cors());
 
 // MongoDB config
 const db = mongoURI;
