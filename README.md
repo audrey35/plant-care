@@ -274,3 +274,16 @@ cp -r duplicate/cs5610_audreyjo/front-end/src cs5610_audreyjo
 5. Authenticate when trying to add a post or comment by following [tutorial](https://github.com/rishipr/teams)
 
 ## Step 7. Add update user for back-end
+
+[Commit](https://github.ccs.neu.edu/audreyjo/4579ba12dfbc5fd58879d38fb48162cf519123dc)
+
+## Step 8. Implement front-end
+
+Followed instructions from [here](https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-2-frontend-6eac4e38ee82)
+
+1. Delete the existing client folder
+2. run `npx create-react-app client` inside the root folder
+3. Add "proxy": "http://localhost:5000" to client/package.json
+4. in client folder run `npm i axios classnames jwt-decode react-redux react-router-dom redux redux-thunk`
+5. Moving react-scripts to devDependencies, delete node_modules, package-lock.json and running npm i, npm audit --production results in 0 vulnerabilities
+6. Clean up React app and add Materialize.css
