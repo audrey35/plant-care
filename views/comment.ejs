@@ -1,0 +1,22 @@
+<h1>
+  Create a Comment
+</h1>
+<form method="POST" id="myForm">
+  <!-- display username<input type="text" placeholder="username" id="xyz" name="username"> -->
+  <input type="textarea" id="text" name="text" placeholder="comment">
+  <button>Create Comment</button>
+</form>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/forum">Forum</a></li>
+</ul>
+
+<script>
+  const template = (postname) => `/post/${postname}/comment`;
+
+document.getElementById('myForm').addEventListener('submit', function(s) {
+  s.preventDefault();
+  this.action = template("<%= postname %>");
+  this.submit();
+});
+</script>

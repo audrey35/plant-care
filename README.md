@@ -1,5 +1,12 @@
 # Final Project: Plant Care Website
 
+## Step 1. Restart from L6-files (prof's repo)
+1. Copy files from professor's repo (L6-files)
+2. Edit to add forum, post, viewProfile (view only for annoymous users), editProfile for known users
+
+
+# Changes to codebase before finalizing
+
 ## Step 1. Create Express project
 
 - create project branch

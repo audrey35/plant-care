@@ -1,0 +1,30 @@
+<h1>
+  Forum
+</h1>
+<div>
+  <% posts.forEach(function(post){ %>
+    <h3>Title: <%- post.title %></h3>
+    <p>Content: <%= post.content %></p>
+    <p>Author: <%= post.username %></p>
+    <p>Likes: <%= post.likes %></p>
+    <p>Date Created: <%= new Intl.DateTimeFormat('en', {
+      timeStyle: "short",
+      dateStyle: "medium",
+      timeZone: "America/Los_Angeles",
+    }).format(post.createdDate) %></p>
+    <h4>Comments</h4>
+    <% post.comments.forEach(function(comment) { %>
+      <p>Comment: <%= comment.text %></p>
+    <p>Author: <%= comment.username %></p>
+  <p>Date Created: <%= new Intl.DateTimeFormat('en', {
+    timeStyle: "short",
+    dateStyle: "medium",
+    timeZone: "America/Los_Angeles",
+  }).format(comment.createdDate) %></p>
+    <% }); %>
+  <% }); %>
+    </div>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/logout">Logout</a></li>
+</ul>

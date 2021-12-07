@@ -1,46 +1,25 @@
 {
-  "name": "plant-care",
+  "name": "loginapp",
   "version": "1.0.0",
-  "description": "A Plant Care App",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.ccs.neu.edu/audreyjo/cs5610_audreyjo.git"
-  },
-  "keywords": [
-    "plant",
-    "care",
-    "MERN"
-  ],
-  "author": "Audrey Jo",
-  "license": "ISC",
+  "main": "app.js",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "concurrently": "^6.4.0",
-    "cors": "^2.8.5",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.3",
     "express": "^4.17.1",
-    "is-empty": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.14",
-    "passport": "^0.5.0",
-    "passport-jwt": "^4.0.0",
-    "swagger-jsdoc": "^6.1.0",
-    "swagger-ui-express": "^4.1.6",
-    "validator": "^13.7.0"
+    "express-session": "^1.17.2",
+    "mongoose": "^5.13.11",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
   },
-  "engines": {
-    "node": "16.13.0"
-  }
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Valcourt",
+  "license": "ISC",
+  "description": "User Authentication"
 }
