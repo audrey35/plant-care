@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head'); %>
+  <body>
+    <% if (private === "private") { %> <%-
+    include("./partials/privateNavigation"); %> <% } else { %> <%-
+    include("./partials/publicNavigation"); %> <% } %>
+    <div class="container my-2 col-md-6">
+      <h1>Plant Care Users</h1>
+      <% if (users !== null) { %>
+      <p>Click on a user to view their public profile.</p>
+      <ul class="nav flex-column">
+        <% users.forEach( function(user) { %>
+        <li class="nav-item">
+          <a class="nav-link h4" href="/profile/<%= user.username %>"
+            ><%= user.username %></a
+          >
+        </li>
+        <% }); %>
+      </ul>
+      <% } else { %>
+      <p>No users have been created yet.</p>
+      <% } %>
+    </div>
+    <script>
+      document.getElementById("users").className += " active";
+    </script>
+    <%- include("./partials/footer"); %>
+  </body>
+</html>

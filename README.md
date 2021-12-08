@@ -14,6 +14,7 @@
 1. Add Material UI
 2. Add navigation and design to forum, home, login, register
 3. Add navigation and design to comment, post
+4. Add navigation and design to public/private profile, user list
 
 # Changes to codebase before finalizing
 

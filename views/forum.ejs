@@ -2,13 +2,9 @@
 <html lang="en">
   <%- include('./partials/head'); %>
   <body>
-    <div class="topnav" id="myTopnav">
-      <a href="/" id="home">Plant Care</a>
-      <a href="/forum" id="forum">Forum</a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
+    <% if (private === "private") { %> <%-
+      include("./partials/privateNavigation"); %> <% } else { %> <%-
+      include("./partials/publicNavigation"); %> <% } %>  
     <div class="container my-2">
       <h1><i class="material-icons">local_florist</i> Plant Care Forum</h1>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end my-2">
@@ -69,16 +65,6 @@
         </div>
       <% } %>
     </div>
-    <script>
-      function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-          x.className += " responsive";
-        } else {
-          x.className = "topnav";
-        }
-      }
-    </script>
     <script>
       document.getElementById("forum").className += " active";
     </script>

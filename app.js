@@ -87,11 +87,15 @@ app.get("/", (req, res) => {
 
 //// FORUM ////
 app.get("/forum", (req, res) => {
+  var private = "public";
+  if (req.isAuthenticated()) {
+    private = "private";
+  }
   Post.find({}, function (err, posts) {
     if (err) {
       res.send(err);
     }
-    res.render("forum", { posts: posts });
+    res.render("forum", { posts: posts, private: private });
   });
 });
 
@@ -136,17 +140,67 @@ app.post("/post/:postname/comment", isLoggedIn, (req, res) => {
 });
 
 //// PROFILE ////
+
+app.get("/users", (req, res) => {
+  var private = "public";
+  if (req.isAuthenticated()) {
+    private = "private";
+  }
+  PublicUser.find({}, function (err, users) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.render("userList", { users: users, private: private });
+    }
+  });
+});
+
 app.get("/profile/:username", (req, res) => {
+  var private = "public";
+  if (req.isAuthenticated()) {
+    private = "private";
+  }
   PublicUser.findOne({ username: req.params.username }, function (err, user) {
     if (err) {
       res.send(err);
     }
-    res.render("publicProfile", { user: user });
+    res.render("publicProfile", { user: user, private: private });
   });
 });
 
 app.get("/profile", isLoggedIn, (req, res) => {
   res.render("privateProfile", { user: req.user });
+});
+
+app.post("/profile", isLoggedIn, (req, res) => {
+  PublicUser.findOneAndUpdate(
+    { username: req.user.username },
+    {
+      bio: req.body.bio,
+      favoritePlant: req.body.favoritePlant,
+    },
+    { new: true },
+    function (err, user) {
+      if (err) {
+        res.send(err);
+      }
+    }
+  );
+  User.findOneAndUpdate(
+    { username: req.user.username },
+    {
+      bio: req.body.bio,
+      favoritePlant: req.body.favoritePlant,
+      email: req.body.email,
+    },
+    { new: true },
+    function (err, user) {
+      if (err) {
+        res.send(err);
+      }
+      res.redirect("/profile");
+    }
+  );
 });
 
 //// AUTHENTICATION ////
