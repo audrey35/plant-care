@@ -168,15 +168,10 @@ app.get("/register", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-  var private = {
-    username: req.body.username,
-    phone: req.body.phone,
-    telephone: req.body.telephone,
-  };
-  var public = { username: req.body.username, phone: req.body.phone };
-  var new_user = new PublicUser(public);
+  var values = { username: req.body.username };
+  var new_user = new PublicUser(values);
   new_user.save();
-  User.register(new User(private), req.body.password, function (err, user) {
+  User.register(new User(values), req.body.password, function (err, user) {
     if (err) {
       console.log(err);
       res.render("register");

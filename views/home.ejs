@@ -6,8 +6,10 @@
     <div class="container my-2">
       <h1>Welcome to Plant Care!</h1>
       <p>Users can chat with other plant lovers in our forum.</p>
+      <% if (post !== null) { %>
     <div class="card">
       <div class="card-body">
+        <h2 class="card-title">Most Recent Post</h2>
         <h5 class="card-title"><%- post.title %></h5>
         <p class="card-text"><%= post.text %></p>
         <span class="card-subtitle mb-2 text-muted"
@@ -55,6 +57,17 @@
         </div>
       </div>
     </div>
+    <% } else { %>
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Most Recent Post</h2>
+          <h5 class="card-title">There are no posts on the forum.</h5>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end my-2">
+            <a href="/post" class="btn btn-outline-success btn-lg" role="button">New Post</a>
+          </div>
+        </div>
+      </div>
+    <% } %>
   </div>
     <script>
       document.getElementById("home").className += " active";

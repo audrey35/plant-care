@@ -1,36 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <!-- Bootstrap 5 CDN -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-      crossorigin="anonymous"
-    />
-    <!-- Google's Material Icons -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <title>Plant Care App</title>
-  </head>
+  <%- include('./partials/head'); %>
   <body>
-    <h1>Create a Comment</h1>
-    <form method="POST" id="myForm">
-      <!-- display username<input type="text" placeholder="username" id="xyz" name="username"> -->
-      <input type="textarea" id="text" name="text" placeholder="comment" />
-      <button>Create Comment</button>
-    </form>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/forum">Forum</a></li>
-    </ul>
-
+    <%- include("./partials/privateNavigation"); %>
+    <div class="container my-2 col-md-6">
+      <h1>Create a Comment</h1>
+      <form method="POST" id="myForm">
+        <div class="form-group my-3">
+          <textarea
+            rows="5"
+            class="form-control form-control-lg"
+            id="text"
+            name="text"
+            placeholder="comment"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Create Comment</button>
+      </form>
+    </div>
     <script>
       const template = (postname) => `/post/${postname}/comment`;
 
@@ -42,10 +29,6 @@
           this.submit();
         });
     </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-      crossorigin="anonymous"
-    ></script>
+    <%- include("./partials/footer"); %>
   </body>
 </html>

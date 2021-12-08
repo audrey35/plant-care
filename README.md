@@ -9,12 +9,11 @@
 
 1. Add MONGODB_URI to config vars in Heroku.
 
-## Step 3. Add Navigation
+## Step 3. Add Navigation and Design
 
 1. Add Material UI
-2. Add navigation to forum page
-
-## Step 4. Add design
+2. Add navigation and design to forum, home, login, register
+3. Add navigation and design to comment, post
 
 # Changes to codebase before finalizing
 
