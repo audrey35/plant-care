@@ -17,6 +17,10 @@ const express = require("express"),
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("useFindAndModify", false);
 
+// CSS
+app.use(express.static(__dirname + "/public"));
+
+// Authentication
 app.use(
   require("express-session")({
     secret: "changeMe", //decode or encode session
@@ -52,20 +56,36 @@ passport.deserializeUser(User.deserializeUser());
 //      R O U T E S
 //=======================
 
+//// HOME ////
 app.get("/", (req, res) => {
-  res.render("home");
-});
-
-//// PUBLIC ROUTES /////
-app.get("/profile/:username", (req, res) => {
-  PublicUser.findOne({ username: req.params.username }, function (err, user) {
+  Post.findOne({}, {}, { sort: { createdDate: -1 } }, function (err, post) {
     if (err) {
       res.send(err);
+    } else {
+      if (req.isAuthenticated()) {
+        Post.findOne(
+          { username: req.user.username },
+          {},
+          { sort: { createdDate: -1 } },
+          function (err, privatePost) {
+            if (err) {
+              res.send(err);
+            } else {
+              res.render("privateHome", {
+                post: post,
+                privatePost: privatePost,
+              });
+            }
+          }
+        );
+      } else {
+        res.render("home", { post: post });
+      }
     }
-    res.render("publicProfile", { user: user });
   });
 });
 
+//// FORUM ////
 app.get("/forum", (req, res) => {
   Post.find({}, function (err, posts) {
     if (err) {
@@ -73,11 +93,6 @@ app.get("/forum", (req, res) => {
     }
     res.render("forum", { posts: posts });
   });
-});
-
-//// PRIVATE ROUTES /////
-app.get("/profile", isLoggedIn, (req, res) => {
-  res.render("privateProfile", { user: req.user });
 });
 
 app.get("/post", isLoggedIn, (req, res) => {
@@ -120,7 +135,21 @@ app.post("/post/:postname/comment", isLoggedIn, (req, res) => {
   );
 });
 
-//// AUTHENTICATION ROUTES ////
+//// PROFILE ////
+app.get("/profile/:username", (req, res) => {
+  PublicUser.findOne({ username: req.params.username }, function (err, user) {
+    if (err) {
+      res.send(err);
+    }
+    res.render("publicProfile", { user: user });
+  });
+});
+
+app.get("/profile", isLoggedIn, (req, res) => {
+  res.render("privateProfile", { user: req.user });
+});
+
+//// AUTHENTICATION ////
 app.get("/login", (req, res) => {
   res.render("login");
 });
@@ -128,7 +157,7 @@ app.get("/login", (req, res) => {
 app.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/profile",
+    successRedirect: "/",
     failureRedirect: "/login",
   }),
   function (req, res) {}

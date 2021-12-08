@@ -1,0 +1,21 @@
+<!-- Navigation source code:https://www.w3schools.com/howto/howto_js_topnav_responsive.asp -->
+<div class="topnav" id="myTopnav">
+  <a href="/" id="home">Plant Care</a>
+  <a href="/forum" id="forum">Forum</a>
+  <a href="/profile" id="profile">Profile</a>
+  <a href="/logout" id="logout">Logout</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+</script>

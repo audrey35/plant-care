@@ -1,5 +1,5 @@
 {
-  "name": "loginapp",
+  "name": "plant-care",
   "version": "1.0.0",
   "main": "app.js",
   "dependencies": {
@@ -20,7 +20,7 @@
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Valcourt",
+  "author": "Audrey Jo",
   "license": "ISC",
-  "description": "User Authentication"
+  "description": "Plant Care forum website"
 }

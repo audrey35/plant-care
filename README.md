@@ -7,6 +7,15 @@
 
 ## Step 2. Add MongoDB Atlas URI
 
+1. Add MONGODB_URI to config vars in Heroku.
+
+## Step 3. Add Navigation
+
+1. Add Material UI
+2. Add navigation to forum page
+
+## Step 4. Add design
+
 # Changes to codebase before finalizing
 
 ## Step 1. Create Express project

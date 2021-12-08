@@ -2,12 +2,13 @@
 <html lang="en">
   <%- include('./partials/head'); %>
   <body>
-    <%- include("./partials/publicNavigation"); %>
+    <%- include("./partials/privateNavigation"); %>
     <div class="container my-2">
       <h1>Welcome to Plant Care!</h1>
       <p>Users can chat with other plant lovers in our forum.</p>
     <div class="card">
       <div class="card-body">
+        <h2 class="card-title">Most Recent Post</h4>
         <h5 class="card-title"><%- post.title %></h5>
         <p class="card-text"><%= post.text %></p>
         <span class="card-subtitle mb-2 text-muted"
@@ -34,6 +35,56 @@
                   <a id="comment" href="/post/<%- post.name %>/comment" class="btn btn-outline-success btn-lg" role="button">New Comment</a>
                 </div>
                 <% post.comments.forEach(function(comment) { %>
+                <p><%= comment.text %></p>
+                <p>
+                  <span>Author: <i><%= comment.username %></i></span>
+                  &nbsp; &nbsp;
+                  <span>
+                    Date:
+                    <i
+                      ><%= new Intl.DateTimeFormat('en', { timeStyle: "short",
+                      dateStyle: "medium", timeZone: "America/Los_Angeles",
+                      }).format(comment.createdDate) %></i
+                    >
+                  </span>
+                  <hr />
+                  <% }); %> 
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card my-2">
+      <div class="card-body">
+        <h2 class="card-title">My Most Recent Post</h4>
+        <h5 class="card-title"><%- privatePost.title %></h5>
+        <p class="card-text"><%= privatePost.text %></p>
+        <span class="card-subtitle mb-2 text-muted"
+          >Author: <i><%= privatePost.username %></i></span
+        >&nbsp; &nbsp;
+        <span class="card-subtitle mb-2 text-muted"
+          >Date:
+          <i
+            ><%= new Intl.DateTimeFormat('en', { timeStyle: "short", dateStyle:
+            "medium", timeZone: "America/Los_Angeles",
+            }).format(privatePost.createdDate) %></i
+          >
+        </span>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                Comments
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end my-2">
+                  <a id="comment" href="/post/<%- privatePost.name %>/comment" class="btn btn-outline-success btn-lg" role="button">New Comment</a>
+                </div>
+                <% privatePost.comments.forEach(function(comment) { %>
                 <p><%= comment.text %></p>
                 <p>
                   <span>Author: <i><%= comment.username %></i></span>
