@@ -15,6 +15,7 @@
 2. Add navigation and design to forum, home, login, register
 3. Add navigation and design to comment, post
 4. Add navigation and design to public/private profile, user list
+5. Add footer and privacy policy (displayed after registration)
 
 # Changes to codebase before finalizing
 

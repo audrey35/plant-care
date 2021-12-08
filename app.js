@@ -56,6 +56,17 @@ passport.deserializeUser(User.deserializeUser());
 //      R O U T E S
 //=======================
 
+//// PRIVACY POLICY ////
+app.get("/privacy", (req, res) => {
+  var private = "public";
+  if (req.isAuthenticated()) {
+    private = "private";
+    res.render("privacypolicy", { private: private });
+  } else {
+    res.render("privacypolicy", { private: private });
+  }
+});
+
 //// HOME ////
 app.get("/", (req, res) => {
   Post.findOne({}, {}, { sort: { createdDate: -1 } }, function (err, post) {
@@ -231,7 +242,7 @@ app.post("/register", (req, res) => {
       res.render("register");
     }
     passport.authenticate("local")(req, res, function () {
-      res.redirect("/login");
+      res.redirect("/privacy");
     });
   });
 });
