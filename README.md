@@ -1,5 +1,7 @@
 # Final Project: Plant Care Website
 
+[Heroku](http://cs5610-audreyjo-3.herokuapp.com/) link for the project
+
 ## Step 1. Restart from L6-files (prof's repo)
 
 1. Copy files from professor's repo (L6-files)
