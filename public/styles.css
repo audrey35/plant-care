@@ -5,6 +5,10 @@ body {
   color: #414833;
 }
 
+img {
+  max-width: 10%;
+}
+
 .card {
   background-color: #e9f5db;
 }

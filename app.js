@@ -5,6 +5,7 @@ const express = require("express"),
   pL = require("passport-local"),
   bodyParser = require("body-parser"),
   LocalStrategy = require("passport-local"),
+  axios = require("axios"),
   User = require("./models/user"),
   PublicUser = require("./models/publicUser"),
   Post = require("./models/post"),
@@ -94,6 +95,27 @@ app.get("/", (req, res) => {
       }
     }
   });
+});
+
+//// PLANT SEARCH ////
+app.get("/plant", async (req, res) => {
+  var private = "public";
+  if (req.isAuthenticated()) {
+    private = "private";
+  }
+  res.render("plant", { private: private, plants: null });
+});
+
+app.post("/plant", async (req, res) => {
+  var private = "public";
+  if (req.isAuthenticated()) {
+    private = "private";
+  }
+  const result = await axios.get(
+    `https://openfarm.cc/api/v1/crops/?filter=${req.body.search}`
+  );
+  const body = await result.data;
+  res.render("plant", { private: private, plants: body.data });
 });
 
 //// FORUM ////

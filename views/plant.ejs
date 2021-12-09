@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head'); %>
+  <body class="d-flex flex-column min-vh-100">
+    <% if (private === "private") { %> <%-
+    include("./partials/privateNavigation"); %> <% } else { %> <%-
+    include("./partials/publicNavigation"); %> <% } %>
+    <div class="wrapper flex-grow-1 container my-2">
+      <h1>Plant Search</h1>
+      <p>
+        This search tool uses data from the
+        <a href="https://openfarm.cc/api/v1/crops/tiny-tim-tomato">API</a> (<a
+          href="https://github.com/openfarmcc/OpenFarm/blob/mainline/docs/api_docs.md"
+          >documentation</a
+        >) provided by <a href="https://openfarm.cc">OpenFarm</a>.
+      </p>
+      <form action="/plant" method="POST" class="input-group rounded my-4">
+        <input
+          type="search"
+          class="form-control rounded"
+          id="search"
+          name="search"
+          placeholder="Search for a plant"
+        />
+        <button type="submit" class="input-group-text border-0">
+          <i class="material-icons">search</i>
+        </button>
+      </form>
+      <% if (plants === null) { %>
+      <!-- only search bar -->
+      <% } else if (plants.length === 0) { %>
+      <!-- no plants found -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            Sorry, but the database doesn't have any plants with that name.
+            Please try again.
+          </h5>
+        </div>
+      </div>
+      <% } else { %>
+      <!-- plants exist -->
+      <% plants.forEach(function(plant){ %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= plant.attributes.name %></h5>
+          <% if (plant.attributes.main_image_path.startsWith("http")) { %>
+          <img
+            class="card-img-top"
+            src="<%= plant.attributes.main_image_path %>"
+            alt="Picture of <%= plant.attributes.name %>"
+          />
+          <% } else { %>
+          <img
+            class="card-img-top"
+            src="https://openfarm.cc<%= plant.attributes.main_image_path %>"
+            alt="Picture of <%= plant.attributes.name %>"
+          />
+          <% } %>
+
+          <p class="card-text">
+            Binomial name: <%= plant.attributes.binomial_name %>
+          </p>
+          <p class="card-text">
+            Description: <%= plant.attributes.description %>
+          </p>
+          <p class="card-text">
+            Sun requirement: <%= plant.attributes.sun_requirements %>
+          </p>
+          <p class="card-text">
+            Sowing method: <%= plant.attributes.sowing_method %>
+          </p>
+          <p class="card-text">Spread: <%= plant.attributes.spread %></p>
+          <p class="card-text">
+            Row spacing: <%= plant.attributes.row_spacing %>
+          </p>
+          <p class="card-text">Height: <%= plant.attributes.height %></p>
+          <p class="card-text">
+            More details (data source):
+            <a href="https://openfarm.cc<%= plant.links.self.website %>"
+              >OpenFarm</a
+            >
+          </p>
+        </div>
+      </div>
+      <hr />
+      <% }); %> <% } %>
+    </div>
+    <script>
+      document.getElementById("plant").className += " active";
+    </script>
+    <%- include("./partials/footer"); %>
+  </body>
+</html>

@@ -17,6 +17,11 @@
 4. Add navigation and design to public/private profile, user list
 5. Add footer and privacy policy (displayed after registration)
 
+## Step 4. Add plant search tool (openfarm.cc)
+
+1. Add plant search functionality
+2. Display search results as plant cards
+
 # Changes to codebase before finalizing
 
 ## Step 1. Create Express project
