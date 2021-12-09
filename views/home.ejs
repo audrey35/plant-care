@@ -6,6 +6,9 @@
     <div class="wrapper flex-grow-1 container my-2">
       <h1>Welcome to Plant Care!</h1>
       <p>Users can chat with other plant lovers in our forum.</p>
+      <% if (message !== "") { %>
+        <p class="text-success"><%= message %></p>
+      <% } %>
       <% if (post !== null) { %>
     <div class="card">
       <div class="card-body">
@@ -44,7 +47,7 @@
                     Date:
                     <i
                       ><%= new Intl.DateTimeFormat('en', { timeStyle: "short",
-                      dateStyle: "medium", timeZone: "America/Los_Angeles",
+                      dateStyle: "medium", timeZone: "America/New_York",
                       }).format(comment.createdDate) %></i
                     >
                   </span>

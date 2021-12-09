@@ -6,6 +6,7 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   LocalStrategy = require("passport-local"),
   axios = require("axios"),
+  url = require("url"),
   User = require("./models/user"),
   PublicUser = require("./models/publicUser"),
   Post = require("./models/post"),
@@ -60,11 +61,18 @@ passport.deserializeUser(User.deserializeUser());
 //// PRIVACY POLICY ////
 app.get("/privacy", (req, res) => {
   var private = "public";
+  var msg = "";
+  if (req.query.message === "success") {
+    msg = "Success! Your account has been created and you are logged in!";
+  }
   if (req.isAuthenticated()) {
     private = "private";
-    res.render("privacypolicy", { private: private });
+    res.render("privacypolicy", {
+      private: private,
+      message: msg,
+    });
   } else {
-    res.render("privacypolicy", { private: private });
+    res.render("privacypolicy", { private: private, message: msg });
   }
 });
 
@@ -83,15 +91,24 @@ app.get("/", (req, res) => {
             if (err) {
               res.send(err);
             } else {
+              var msg = "";
+              if (req.query.message === "success") {
+                msg = "Success! You are logged in!";
+              }
               res.render("privateHome", {
                 post: post,
                 privatePost: privatePost,
+                message: msg,
               });
             }
           }
         );
       } else {
-        res.render("home", { post: post });
+        var msg = "";
+        if (req.query.message === "success") {
+          msg = "Success! You are logged out!";
+        }
+        res.render("home", { post: post, message: msg });
       }
     }
   });
@@ -124,16 +141,29 @@ app.get("/forum", (req, res) => {
   if (req.isAuthenticated()) {
     private = "private";
   }
+  var msg = "";
+  if (req.query.message === null) {
+    msg = "";
+  } else if (req.query.message === "post-success") {
+    msg = "Success! Your post has been created!";
+  } else if (req.query.message === "comment-success") {
+    msg = "Success! Your comment has been added to the post!";
+  }
   Post.find({}, function (err, posts) {
     if (err) {
       res.send(err);
+    } else {
+      res.render("forum", { posts: posts, private: private, message: msg });
     }
-    res.render("forum", { posts: posts, private: private });
   });
 });
 
 app.get("/post", isLoggedIn, (req, res) => {
-  res.render("post");
+  var msg = "";
+  if (req.query.message !== null) {
+    msg = req.query.message;
+  }
+  res.render("post", { message: msg });
 });
 
 app.post("/post", isLoggedIn, (req, res) => {
@@ -147,14 +177,19 @@ app.post("/post", isLoggedIn, (req, res) => {
   });
   new_post.save(function (err, post) {
     if (err) {
-      res.send(err);
+      res.redirect(url.format({ pathname: "/post", query: { message: err } }));
+    } else {
+      res.redirect("/forum?message=post-success");
     }
-    res.redirect("/forum");
   });
 });
 
 app.get("/post/:postname/comment", isLoggedIn, (req, res) => {
-  res.render("comment", { postname: req.params.postname });
+  var msg = "";
+  if (req.query.message !== null) {
+    msg = req.query.message;
+  }
+  res.render("comment", { postname: req.params.postname, message: msg });
 });
 
 app.post("/post/:postname/comment", isLoggedIn, (req, res) => {
@@ -165,9 +200,15 @@ app.post("/post/:postname/comment", isLoggedIn, (req, res) => {
     { new: true },
     function (err, post) {
       if (err) {
-        res.send(err);
+        res.redirect(
+          url.format({
+            pathname: `/post/${req.params.postname}/comment`,
+            query: { message: err },
+          })
+        );
+      } else {
+        res.redirect("/forum?message=comment-success");
       }
-      res.redirect("/forum");
     }
   );
 });
@@ -196,13 +237,20 @@ app.get("/profile/:username", (req, res) => {
   PublicUser.findOne({ username: req.params.username }, function (err, user) {
     if (err) {
       res.send(err);
+    } else {
+      res.render("publicProfile", { user: user, private: private });
     }
-    res.render("publicProfile", { user: user, private: private });
   });
 });
 
 app.get("/profile", isLoggedIn, (req, res) => {
-  res.render("privateProfile", { user: req.user });
+  var msg = "";
+  if (req.query.message === "success") {
+    msg = "Success! The profile has been updated!";
+  } else if (req.query.message !== null) {
+    msg = req.query.message;
+  }
+  res.render("privateProfile", { user: req.user, message: msg });
 });
 
 app.post("/profile", isLoggedIn, (req, res) => {
@@ -215,7 +263,9 @@ app.post("/profile", isLoggedIn, (req, res) => {
     { new: true },
     function (err, user) {
       if (err) {
-        res.send(err);
+        res.redirect(
+          url.format({ pathname: "/profile", query: { message: err } })
+        );
       }
     }
   );
@@ -229,56 +279,67 @@ app.post("/profile", isLoggedIn, (req, res) => {
     { new: true },
     function (err, user) {
       if (err) {
-        res.send(err);
+        res.redirect(
+          url.format({ pathname: "/profile", query: { message: err } })
+        );
+      } else {
+        res.redirect("/profile?message=success");
       }
-      res.redirect("/profile");
     }
   );
 });
 
 //// AUTHENTICATION ////
 app.get("/login", (req, res) => {
-  res.render("login");
+  var msg = "";
+  if (req.query.message === "fail") {
+    msg =
+      "UserNotFoundError: Could not login. Try a different username and password combination.";
+  }
+  res.render("login", { message: msg });
 });
 
 app.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
+    successRedirect: "/?message=success",
+    failureRedirect: "/login?message=fail",
   }),
   function (req, res) {}
 );
 
 app.get("/register", (req, res) => {
-  res.render("register");
+  var msg = "";
+  res.render("register", { message: msg });
 });
 
 app.post("/register", (req, res) => {
   var values = { username: req.body.username };
-  var new_user = new PublicUser(values);
-  new_user.save();
   User.register(new User(values), req.body.password, function (err, user) {
     if (err) {
       console.log(err);
-      res.render("register");
+      res.render("register", { message: err });
+    } else {
+      passport.authenticate("local")(req, res, function () {
+        var new_user = new PublicUser(values);
+        new_user.save();
+        res.redirect("/privacy?message=success");
+      });
     }
-    passport.authenticate("local")(req, res, function () {
-      res.redirect("/privacy");
-    });
   });
 });
 
 app.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect("/?message=success");
 });
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
+  } else {
+    res.redirect("/login");
   }
-  res.redirect("/login");
 }
 
 //Listen On Server

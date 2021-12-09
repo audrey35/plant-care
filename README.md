@@ -22,6 +22,14 @@
 1. Add plant search functionality
 2. Display search results as plant cards
 
+## Step 5. Provide success/fail message when submitting
+
+1. Add success/fail message when registering
+2. Add success/fail message when logging in
+3. Add success message when logging out
+4. Add success/fail message when creating a post/comment
+5. Add success/fail message when updating profile
+
 # Changes to codebase before finalizing
 
 ## Step 1. Create Express project

@@ -7,6 +7,9 @@
       include("./partials/publicNavigation"); %> <% } %>  
     <div class="wrapper flex-grow-1 container my-2">
       <h1><i class="material-icons">local_florist</i> Plant Care Forum</h1>
+      <% if (message !== "") { %>
+        <p class="text-success"><%= message %></p>
+      <% } %>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end my-2">
         <a href="/post" class="btn btn-outline-success btn-lg" role="button">New Post</a>
       </div>
@@ -19,7 +22,7 @@
               <span class="card-subtitle mb-2 text-muted">Author: <i><%= post.username %></i></span>&nbsp; &nbsp;
               <span class="card-subtitle mb-2 text-muted">Date: 
                 <i><%= new Intl.DateTimeFormat('en', { timeStyle: "short", dateStyle:
-                "medium", timeZone: "America/Los_Angeles",
+                "medium", timeZone: "America/New_York",
                 }).format(post.createdDate) %></i>
               </span>
               <div class="accordion" id="accordionExample">
